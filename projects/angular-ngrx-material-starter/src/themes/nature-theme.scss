@@ -1,0 +1,9 @@
+$ngrxtmp-nature-primary: mat-palette($mat-brown, 700, 300, 900);
+$ngrxtmp-nature-accent: mat-palette($mat-deep-purple, 300);
+$ngrxtmp-nature-warn: mat-palette($mat-red, 600);
+
+$ngrxtmp-nature-theme: mat-light-theme(
+  $ngrxtmp-nature-primary,
+  $ngrxtmp-nature-accent,
+  $ngrxtmp-nature-warn
+);

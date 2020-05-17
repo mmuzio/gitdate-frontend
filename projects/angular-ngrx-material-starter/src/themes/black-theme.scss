@@ -1,0 +1,9 @@
+$ngrxtmp-black-primary: mat-palette($mat-grey, 700, 300, 900);
+$ngrxtmp-black-accent: mat-palette($mat-blue-grey, 400);
+$ngrxtmp-black-warn: mat-palette($mat-red, 500);
+
+$ngrxtmp-black-theme: mat-dark-theme(
+  $ngrxtmp-black-primary,
+  $ngrxtmp-black-accent,
+  $ngrxtmp-black-warn
+);

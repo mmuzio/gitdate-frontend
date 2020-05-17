@@ -1,0 +1,9 @@
+$ngrxtmp-light-primary: mat-palette($mat-grey, 200, 500, 300);
+$ngrxtmp-light-accent: mat-palette($mat-brown, 200);
+$ngrxtmp-light-warn: mat-palette($mat-deep-orange, 200);
+
+$ngrxtmp-light-theme: mat-light-theme(
+  $ngrxtmp-light-primary,
+  $ngrxtmp-light-accent,
+  $ngrxtmp-light-warn
+);

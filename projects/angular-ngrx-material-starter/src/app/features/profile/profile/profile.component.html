@@ -1,0 +1,44 @@
+<div class="container">
+    <br><br>
+    <div class="row">
+      <div class="col-sm-12"><h1>{{profileData.name}}'s {{ 'ngrxtmp.profile.title' | translate }}</h1></div>
+    </div>
+    <br>
+    <ng-container>
+      <div class="row">
+        <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
+          <h2>{{ 'ngrxtmp.profile.lang' | translate }}</h2>
+          <div class="icon-form-field">
+            <ul>
+                <li *ngFor="let language of profileData.languages">
+                    <mat-icon color="accent"><fa-icon icon="language" color="accent"></fa-icon></mat-icon>
+                    {{language}}
+                </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
+            <h2>{{ 'ngrxtmp.profile.tech' | translate }}</h2>
+            <div class="icon-form-field">
+              <ul>
+                  <li *ngFor="let technology of profileData.technologies">
+                      <mat-icon color="accent"><mat-icon color="accent"><fa-icon icon="window-maximize"></fa-icon></mat-icon></mat-icon>
+                      {{technology}}
+                  </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
+            <h2>{{ 'ngrxtmp.profile.repos' | translate }}</h2>
+            <mat-card class="mat-card" *ngFor="let repo of profileData.repos">
+                <mat-card-title>{{repo.name}}</mat-card-title>
+                <mat-card-subtitle><a href="{{'https://github.com/mmuzio/'+repo.url}}">{{repo.url}}</a>
+                </mat-card-subtitle>
+                <mat-card-content>{{repo.description}}</mat-card-content>
+            </mat-card>
+        </div>
+      </div>
+    </ng-container>
+  </div>

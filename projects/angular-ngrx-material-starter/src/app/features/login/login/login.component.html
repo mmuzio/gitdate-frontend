@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12"><h1>{{ 'ngrxtmp.login.title' | translate }}</h1></div>
+    </div>
+    <br>
+    <ng-container *ngIf="auth$ | async as auth">
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>{{ 'ngrxtmp.login.username' | translate }}</mat-label>
+              <input matInput type="text" name="username" #username>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>{{ 'ngrxtmp.login.password' | translate }}</mat-label>
+                <input matInput type="password" name="password" #password>
+            </mat-form-field>
+        <br><br>
+        <button class="add" color="primary" mat-raised-button type="submit" (click)="onLogin(username.value, password.value)">{{ 'ngrxtmp.login.title' | translate }}</button>
+        <button class="add" color="primary" mat-raised-button type="submit" (click)="onRegister(username.value, password.value)">Register</button>
+      </form>        
+    </ng-container>
+  </div>
+  
