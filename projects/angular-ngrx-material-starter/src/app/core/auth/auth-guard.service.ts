@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { selectIsAuthenticated } from './auth.selectors';
 import { AppState } from '../core.state';
@@ -10,9 +10,28 @@ import { AppState } from '../core.state';
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private router: Router) {}
 
-  canActivate(): Observable<boolean> {
-    return this.store.pipe(select(selectIsAuthenticated));
+  isLoggedIn: boolean;
+
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+    const result = this.store.pipe(select(selectIsAuthenticated))
+    result.subscribe(isLoggedIn => {
+      if (!isLoggedIn) {
+            this.router.navigateByUrl('/login');
+          } 
+      })
+    return result; 
+    // .subscribe(isLoggedIn => {
+    //   if (!isLoggedIn) {
+    //     this.router.navigateByUrl('/login');
+    //     return of(false);
+    //   } else {
+    //     return of(true);
+    //   }
+    // }, err => {
+    //   this.router.navigateByUrl('/login');
+    //   return of(false);
+    // });
   }
 }

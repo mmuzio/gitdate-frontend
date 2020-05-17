@@ -1,13 +1,57 @@
 <div class="background">
   <div class="gradient">
-    <div class="container">
-      <h1>{{ 'ngrxtmp.title.long' | translate }}</h1>
+    <div class="container text-center">
+      <h1>How to Use Gitdate</h1>
+      <br>
+      <h2>Make Your Profile</h2>
       <div class="actions">
-        <a mat-raised-button class="actions-main" color="warn" routerLink="../settings" [ngClass]="routeAnimationsElements">
-          {{ 'ngrxtmp.about.change-theme' | translate }}
+        <a 
+          mat-raised-button 
+          class="actions-main" 
+          color="accent" 
+          href="https://www.github.com/mmuzio/gitdatetest" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          [ngClass]="routeAnimationsElements">
+          <fa-icon [icon]="['fab','github']"></fa-icon>
+          1. Fork Profile Repo
         </a>
       </div>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <h5>2. Clone Profile Repo</h5>
+      <br>
+      <h5>3. Update gitdate.json</h5>
+      <!-- <ul>
+        <li>
+          Your preffered profile name
+        </li>
+        <li>
+          Your favorite programming languages
+        </li>
+        <li>
+          Your favorite technologies
+        </li>
+        <li>
+          Your favorite repos - they must be your own!
+        </li>
+      </ul> -->
+      <br>
+      <h5>4. Update assets/images</h5>
+      <br>
+      <h5>5. Commit</h5>
+      <br>
+      <h5>6. Push</h5>
+      <br>
+      <h2>Connect with Other Programmers</h2>
+      <div class="actions">
+        <a 
+          mat-raised-button 
+          class="actions-main" 
+          color="accent" 
+          routerLink="../connect" 
+          [ngClass]="routeAnimationsElements">
+          1. Connect
+        </a>
+      </div>
     </div>
   </div>
 </div>

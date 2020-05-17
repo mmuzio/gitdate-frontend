@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
     <div class="row">
       <div class="col-sm-12"><h1>{{ 'ngrxtmp.login.title' | translate }}</h1></div>
     </div>
@@ -15,9 +15,37 @@
                 <input matInput type="password" name="password" #password>
             </mat-form-field>
         <br><br>
-        <button class="add" color="primary" mat-raised-button type="submit" (click)="onLogin(username.value, password.value)">{{ 'ngrxtmp.login.title' | translate }}</button>
-        <button class="add" color="primary" mat-raised-button type="submit" (click)="onRegister(username.value, password.value)">Register</button>
-      </form>        
+        <div class="actions">
+          <button 
+            class="actions-main" 
+            color="accent" 
+            mat-raised-button 
+            type="submit" 
+            (click)="onLogin(username.value, password.value)">
+            {{ 'ngrxtmp.login.title' | translate }}
+          </button>
+          <button 
+            class="actions-main" 
+            color="warn" 
+            mat-raised-button 
+            type="submit" 
+            (click)="onRegister(username.value, password.value)">
+            Register
+          </button>
+        </div>
+        
+      </form>    
+      <div class="actions">
+        <button
+         mat-raised-button 
+         class="actions-main" 
+         color="accent" 
+         [ngClass]="routeAnimationsElements"
+         routerLink="../about">
+         New to GitDate?
+        </button>
+      </div>   
     </ng-container>
+    <br><br>
   </div>
   

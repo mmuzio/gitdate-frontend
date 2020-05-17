@@ -35,8 +35,43 @@
   mat-form-field {
     flex: 1 0 auto;
   }
+ 
+@import '../../../../styles-variables';
 
-  .add {
+a {
+    text-decoration: none;
+}
+
+.actions {
+    text-align: center;
+    margin: 50px;
+    z-index: 1;
+}
+
+button {
+
     margin: 10px 10px 10px 10px;
-  }
-  
+    width: 20%;
+
+    &.actions-main {
+        text-transform: uppercase;
+        padding: 3px 24px;
+    }
+
+    fa-icon {
+        position: relative;
+        bottom: 1px;
+    }
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+    button {
+      width: 80%;
+    }
+}
+
+@media (min-width: map-get($grid-breakpoints, sm)+1) and (max-width: map-get($grid-breakpoints, md)) {
+    button {
+      width: 50%;
+    }
+}
