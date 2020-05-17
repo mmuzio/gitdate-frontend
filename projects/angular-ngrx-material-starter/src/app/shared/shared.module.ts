@@ -43,7 +43,12 @@ import {
   faLightbulb,
   faWindowMaximize,
   faStream,
-  faBook
+  faBook,
+  faThumbsUp,
+  faThumbsDown,
+  faCode,
+  faCodeBranch,
+  faWrench
 } from '@fortawesome/free-solid-svg-icons';
 import { faMediumM, faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -73,7 +78,6 @@ import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
     MatSnackBarModule,
     MatSlideToggleModule,
     MatDividerModule,
-
     FontAwesomeModule
   ],
   declarations: [
@@ -85,7 +89,6 @@ import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-
     TranslateModule,
 
     MatButtonModule,
@@ -135,7 +138,12 @@ export class SharedModule {
       faLightbulb,
       faWindowMaximize,
       faStream,
-      faBook
+      faBook,
+      faThumbsUp,
+      faThumbsDown,
+      faCode,
+      faCodeBranch,
+      faWrench
     );
   }
 }

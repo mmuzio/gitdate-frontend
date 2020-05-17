@@ -8,21 +8,25 @@ import { ResponseData } from '../profile/responsedata.model';
 })
 export class ConnectService {
 
-  public viewProfile() {
+  public getUser() {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.http.get('http://localhost:8080/connect', { headers, responseType: 'text'});
   }
 
-  public getProfile(username: any): Observable<ResponseData> {
+  public getUserProfile(username: any): Observable<ResponseData> {
     return this.http.get<ResponseData>('https://api.github.com/repos/' + username + '/gitdatetest/contents/gitdate.json?ref=master');
   }
 
-  public acceptProfile(username: string) {
+  public getProfileImages(username: any): Observable<ResponseData[]> {
+    return this.http.get<ResponseData[]>('https://api.github.com/repos/' + username + '/gitdatetest/contents/assets/images');
+  }
+
+  public acceptUser(username: string) {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.http.get('http://localhost:8080/accept/' + username, { headers, responseType: 'text'});
   }
 
-  public rejectProfile(username: string) {
+  public rejectUser(username: string) {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.http.get('http://localhost:8080/reject/' + username, { headers, responseType: 'text'});
   }

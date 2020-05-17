@@ -30,7 +30,8 @@
             ],
             "styles": [
               "projects/angular-ngrx-material-starter/src/styles-app-loading.scss",
-              "projects/angular-ngrx-material-starter/src/styles.scss"
+              "projects/angular-ngrx-material-starter/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -110,7 +111,8 @@
             ],
             "styles": [
               "projects/angular-ngrx-material-starter/src/styles-app-loading.scss",
-              "projects/angular-ngrx-material-starter/src/styles.scss"
+              "projects/angular-ngrx-material-starter/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
