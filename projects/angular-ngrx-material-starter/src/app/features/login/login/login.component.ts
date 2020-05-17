@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(username: string, password: string) {
     this.store.dispatch(authLogin({username, password}));
+    localStorage.setItem('username', username);
   }
 
   onRegister(username: string, password: string) {

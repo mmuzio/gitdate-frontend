@@ -1,7 +1,41 @@
+@import '../../../../styles-variables';
+
+a {
+    text-decoration: none;
+}
+
 ul {
     list-style: none;
 }
 
+img {
+    width: 50%;
+    height: auto;
+}
+
 .mat-card {
     margin: 10px 10px 10px 10px;
+}
+
+button {
+    background-color: white;
+    margin: 10px 10px 10px 10px;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+    img {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (min-width: map-get($grid-breakpoints, sm)+1) and (max-width: map-get($grid-breakpoints, md)) {
+    img {
+        width: 70%;
+        height: auto;
+    }
 }

@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 import { ResponseData } from '../../profile/responsedata.model';
 import { Profile } from '../../profile/profile.model';
-import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngrxtmp-connect',
@@ -16,11 +15,7 @@ export class ConnectComponent implements OnInit {
   constructor(private connectService: ConnectService,
     private route: ActivatedRoute, private router: Router) { }
 
-  @ViewChild('ngcarousel', { static: true }) ngCarousel: NgbCarousel;
-
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-
-  responseData: ResponseData;
 
   profileData: Profile;
 
@@ -28,51 +23,37 @@ export class ConnectComponent implements OnInit {
 
   ngOnInit() {
     this.getUserProfile();
-    this.getProfileImages();
-  }
-
-  getToPrev() {
-    this.ngCarousel.prev();
-  }
-
-  // Move to next slide
-  goToNext() {
-    this.ngCarousel.next();
-  }
-
-  // Pause slide
-  stopCarousel() {
-    this.ngCarousel.pause();
   }
 
   getUserProfile() {
     this.connectService.getUser().subscribe(username => {
-      console.log('getUser username: ' + username);
       this.connectService.getUserProfile(username).subscribe(response => {
-        console.log('getUserProfile response received');
-        this.responseData = response;
         this.profileData = JSON.parse(atob(response.content));
-        console.log('profile name is ' + this.profileData.name);
       });
+      this.getProfileImages(username);
     });
   }
 
-  getProfileImages() {
-    this.connectService.getProfileImages('mmuzio').subscribe(response => {
-      this.imageData = response;
+  getProfileImages(username: string) {
+    this.connectService.getProfileImages(username).subscribe(response => {
+      this.imageData = this.clean(response);
+    }, err => {
+      this.imageData = [new ResponseData('Images Not Found', null, null, null, null, null , null, 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg', null, null, null, null)];
     });
+  }
+
+  clean(response: ResponseData[]): ResponseData[] {
+    return response.filter((elem) => elem.name !== '.DS_Store');
   }
 
   acceptUser() {
     this.connectService.acceptUser(this.profileData.name).subscribe(username => {
-      console.log('accept user response: ' + username);
       this.getUserProfile();
     });
   }
 
   rejectUser() {
     this.connectService.rejectUser(this.profileData.name).subscribe(username => {
-      console.log('accept user response: ' + username);
       this.getUserProfile();
     });
 
