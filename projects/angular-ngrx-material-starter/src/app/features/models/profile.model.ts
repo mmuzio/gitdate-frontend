@@ -6,6 +6,7 @@ export class Profile {
         name: string;
         description: string;
         url: string;
+        languages?: string[]
     }];
 
     constructor(name: string,

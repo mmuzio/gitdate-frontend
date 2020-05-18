@@ -21,10 +21,10 @@ export class ConnectService {
     return this.http.get<ResponseData[]>('https://api.github.com/repos/' + username + '/gitdatetest/contents/assets/images');
   }
 
-  public getRepositoryLanguages(username: string, repo: string): Observable<LanguageResponse> {
-    
+  public getRepositoryLanguages(username: string, repo: string): Observable<any> {
+    return this.http.get<any>('https://api.github.com/repos/' + username + '/' + repo + '/languages');
   }
-
+  
   public acceptUser(username: string) {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
     return this.http.get('http://localhost:8080/accept/' + username, { headers, responseType: 'text'});

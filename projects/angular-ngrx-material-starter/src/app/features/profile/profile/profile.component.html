@@ -59,6 +59,18 @@
                 </a>
               </mat-card-title>
               <mat-card-content>{{repo.description}}</mat-card-content>
+              <mat-card-footer>
+                <div *ngIf="profileData.repos && profileData.repos[0].languages">
+                  <button 
+                    mat-raised-button
+                    class="languages"
+                    color="accent"
+                    [ngClass]="routeAnimationsElements" 
+                    *ngFor="let language of repo.languages">
+                    {{language}}
+                  </button>
+                </div>
+              </mat-card-footer>
           </mat-card>
       </div>
     </div>

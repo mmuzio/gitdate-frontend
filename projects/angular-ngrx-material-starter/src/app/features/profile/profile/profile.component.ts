@@ -20,8 +20,6 @@ export class ProfileComponent implements OnInit {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-  responseData: ResponseData;
-
   profileData: Profile; 
 
   imageData: ResponseData[];
@@ -33,8 +31,18 @@ export class ProfileComponent implements OnInit {
   getUserProfile() {
     const username = localStorage.getItem('username');
     this.profileService.getUser(username).subscribe(response => {
-      this.responseData = response;
       this.profileData = JSON.parse(atob(response.content));
+      const length = this.profileData.repos.length;
+      for (let i = 0; i < length; i++) {
+        this.connectService.getRepositoryLanguages(username, this.profileData.repos[i].url)
+          .subscribe(response => {
+            const languages = Object.keys(response);
+            this.profileData.repos[i] = {
+              ...this.profileData.repos[i],
+              languages: languages
+            };
+        });
+      };
     });
     this.getProfileImages(username);
   }

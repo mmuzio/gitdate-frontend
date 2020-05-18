@@ -8,6 +8,15 @@ ul {
     list-style: none;
 }
 
+.languages {
+    width: auto;
+    height: auto;
+    margin: 10px 10px 10px 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
 img {
     width: 50%;
     height: auto;
@@ -15,15 +24,6 @@ img {
 
 .mat-card {
     margin: 10px 10px 10px 10px;
-}
-
-button {
-    background-color: white;
-    margin: 10px 10px 10px 10px;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    min-width: 50px;
-    min-height: 50px;
 }
 
 @media (max-width: map-get($grid-breakpoints, sm)) {

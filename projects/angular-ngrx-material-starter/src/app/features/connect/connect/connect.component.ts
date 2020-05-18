@@ -29,10 +29,22 @@ export class ConnectComponent implements OnInit {
     this.connectService.getUser().subscribe(username => {
       this.connectService.getUserProfile(username).subscribe(response => {
         this.profileData = JSON.parse(atob(response.content));
+        const length = this.profileData.repos.length;
+        for (let i = 0; i < length; i++) {
+        this.connectService.getRepositoryLanguages(username, this.profileData.repos[i].url)
+          .subscribe(response => {
+            const languages = Object.keys(response);
+            this.profileData.repos[i] = {
+              ...this.profileData.repos[i],
+              languages: languages
+            };
+          });
+        };
       });
       this.getProfileImages(username);
+      
     });
-  }
+  };
 
   getProfileImages(username: string) {
     this.connectService.getProfileImages(username).subscribe(response => {
