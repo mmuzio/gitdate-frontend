@@ -28,6 +28,11 @@ const routes: Routes = [
       import('./features/connect/connect.module').then(m => m.ConnectModule)
   },
   {
+    path: 'matches',
+    loadChildren: () =>
+      import('./features/matches/matches.module').then(m => m.MatchesModule)
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./features/login/login.module').then(m => m.LoginModule)

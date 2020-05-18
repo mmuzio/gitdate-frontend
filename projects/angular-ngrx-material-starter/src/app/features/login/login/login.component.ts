@@ -12,7 +12,7 @@ import {
 import { AuthState, State } from '../../../core/auth/auth.models';
 import { selectAuth } from '../../../core/auth/auth.selectors';
 import { LoginService } from '../login.service';
-import { RegisterUser } from '../registerUser.model';
+import { RegisterUser } from '../../models/registerUser.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

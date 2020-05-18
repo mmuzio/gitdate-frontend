@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Profile } from '../profile.model';
-import { ResponseData } from '../responsedata.model';
+import { Profile } from '../../models/profile.model';
+import { ResponseData } from '../../models/responsedata.model';
 import { ProfileService } from '../profile.service';
 import { ConnectService } from '../../connect/connect.service';
 import { ActivatedRoute, Router } from '@angular/router';

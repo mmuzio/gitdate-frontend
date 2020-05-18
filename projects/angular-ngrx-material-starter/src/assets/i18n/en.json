@@ -37,6 +37,7 @@
   "ngrxtmp.menu.logout": "Logout",
   "ngrxtmp.menu.settings": "Settings",
   "ngrxtmp.menu.profile": "Profile",
+  "ngrxtmp.menu.matches": "Matches",
   "ngrxtmp.settings.animations.elements": "Navigation page elements slide up",
   "ngrxtmp.settings.animations.page": "Navigation whole page transition",
   "ngrxtmp.settings.animations.title": "Animations",

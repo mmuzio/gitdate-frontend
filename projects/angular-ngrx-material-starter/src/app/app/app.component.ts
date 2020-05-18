@@ -35,7 +35,8 @@ export class AppComponent implements OnInit {
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br', 'zh-cn', 'he'];
   navigation = [
     { link: 'about', label: 'ngrxtmp.menu.about' },
-    { link: 'connect', label: 'ngrxtmp.menu.connect' }
+    { link: 'connect', label: 'ngrxtmp.menu.connect' },
+    { link: 'matches', label: 'ngrxtmp.menu.matches' }
   ];
   navigationSideMenu = [
     ...this.navigation,

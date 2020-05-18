@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConnectService } from '../connect.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
-import { ResponseData } from '../../profile/responsedata.model';
-import { Profile } from '../../profile/profile.model';
+import { ResponseData } from '../../models/responsedata.model';
+import { Profile } from '../../models/profile.model';
 
 @Component({
   selector: 'ngrxtmp-connect',

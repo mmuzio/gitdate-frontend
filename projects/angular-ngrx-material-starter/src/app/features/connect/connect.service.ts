@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { ResponseData } from '../profile/responsedata.model';
+import { ResponseData } from '../models/responsedata.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,10 @@ export class ConnectService {
 
   public getProfileImages(username: any): Observable<ResponseData[]> {
     return this.http.get<ResponseData[]>('https://api.github.com/repos/' + username + '/gitdatetest/contents/assets/images');
+  }
+
+  public getRepositoryLanguages(username: string, repo: string): Observable<LanguageResponse> {
+    
   }
 
   public acceptUser(username: string) {
