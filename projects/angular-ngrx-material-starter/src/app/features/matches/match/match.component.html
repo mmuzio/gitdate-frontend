@@ -1,1 +1,79 @@
-<p>match works!</p>
+<div class="container" *ngIf="profileData">
+    <br><br>
+    <div class="row text-center">
+      <div class="col-sm-12"><h2>{{profileData.name}}'s {{ 'ngrxtmp.profile.title' | translate }}</h2></div>
+    </div>
+    <br>
+    <ng-container>
+      <div class="row text-center">
+        <div class="col-sm-12" [ngClass]="routeAnimationsElements">
+          <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let image of imageData">
+              <div class="picsum-img-wrapper">
+                <img src="{{image.download_url}}" alt="{{image.name}}">
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
+          <h3>
+            <mat-icon color="accent"><fa-icon icon="code" color="accent"></fa-icon></mat-icon> 
+            &nbsp;{{ 'ngrxtmp.profile.lang' | translate }}
+          </h3>
+          <div class="icon-form-field">
+            <ul>
+                <li *ngFor="let language of profileData.languages">
+                    {{language}}
+                </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
+            <h3>
+              <mat-icon color="accent"><fa-icon icon="wrench" color="accent"></fa-icon></mat-icon>
+              {{ 'ngrxtmp.profile.tech' | translate }}
+            </h3>
+            <div class="icon-form-field">
+              <ul>
+                  <li *ngFor="let technology of profileData.technologies">
+                      {{technology}}
+                  </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12" [ngClass]="routeAnimationsElements">
+            <h3>
+              <mat-icon color="accent"><fa-icon icon="code-branch" color="accent"></fa-icon></mat-icon>
+              {{ 'ngrxtmp.profile.repos' | translate }}
+            </h3>
+            <mat-card class="mat-card" *ngFor="let repo of profileData.repos">
+                <mat-card-title>
+                  <a href="{{'https://github.com/'+username+repo.url}}" target="_blank" rel="noopener noreferrer">
+                    <fa-icon [icon]="['fab','github']"></fa-icon>
+                    {{repo.url}}
+                  </a>
+                </mat-card-title>
+                <mat-card-content>{{repo.description}}</mat-card-content>
+                <mat-card-footer>
+                  <div *ngIf="profileData.repos && profileData.repos[0].languages">
+                    <button 
+                      mat-raised-button
+                      class="languages"
+                      color="accent"
+                      [ngClass]="routeAnimationsElements" 
+                      *ngFor="let language of repo.languages">
+                      {{language}}
+                    </button>
+                  </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+      </div>
+      <br>
+    </ng-container>
+  </div>

@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { ResponseData } from '../models/responsedata.model';
 import { API_BASE_URL, ACCESS_TOKEN } from '../../../environments/environment';
 import { User } from '../models/user.model';
+import { HeadersService } from '../headers/headers.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +17,12 @@ export class ProfileService {
 
   public getCurrentUser() {
 
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-    if (localStorage.getItem(ACCESS_TOKEN)) {
-      console.log(localStorage.getItem(ACCESS_TOKEN));
-      headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN));
-      console.log(headers);
-    }
+    const headers = this.headersService.getHeaders();
 
     return this.http.get<User>(API_BASE_URL + '/user/me', { headers });
 
 }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private headersService: HeadersService) {}
 
 }

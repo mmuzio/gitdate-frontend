@@ -1,0 +1,28 @@
+@import '../../../../styles-variables';
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.languages {
+    width: auto;
+    height: auto;
+    margin: 10px 10px 10px 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+}
+
+img {
+    width: 50%;
+    height: auto;
+}
+
+.mat-card {
+    margin: 10px 10px 10px 10px;
+}

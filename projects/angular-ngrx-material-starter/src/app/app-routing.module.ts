@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { Oauth2Component } from './features/login/oauth2/oauth2.component';
+import { MatchComponent } from './features/matches/match/match.component';
+import { ChatComponent } from './features/matches/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
   {
     path: 'oauth2/redirect',
     component: Oauth2Component
+  },
+  {
+    path: 'match/:id',
+    component: MatchComponent
+  },
+  {
+    path: 'chat/:id',
+    component: ChatComponent
   },
   {
     path: 'about',

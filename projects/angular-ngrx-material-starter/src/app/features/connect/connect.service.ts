@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { ResponseData } from '../models/responsedata.model';
 import { ACCESS_TOKEN } from '../../../environments/environment';
 import { constructor } from 'uuid';
+import { HeadersService } from '../headers/headers.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +12,29 @@ import { constructor } from 'uuid';
 export class ConnectService {
 
   /**
-   * getHeaders is used to append a bearer token to the request header
-   */
-  private getHeaders(): HttpHeaders {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    if (localStorage.getItem(ACCESS_TOKEN)) {
-      const encodedAuth = localStorage.getItem(ACCESS_TOKEN);
-      headers = headers.append('Authorization', 'Bearer ' + encodedAuth);
-    }
-    return headers;
-  }
-
-  /**
    * getUser returns a random gitdate user's github username
    */
   public getUser() {
-    //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    const headers = this.getHeaders();
+    const headers = this.headersService.getHeaders();
     return this.http.get('http://localhost:8080/connect', { headers, responseType: 'text'});
+  }
+
+    /**
+   * acceptUser calls the GitDate API /accept endpoint to accept/like the user's profile
+   * @param username the user's username
+   */
+  public acceptUser(username: string) {
+    const headers = this.headersService.getHeaders();
+    return this.http.post('http://localhost:8080/match', username, { headers, responseType: 'text'});
+  }
+
+  /**
+   * rejectUser calls the GitDate API /reject endpoint to reject/dislike the user's profile
+   * @param username the user's username
+   */
+  public rejectUser(username: string) {
+    const headers = this.headersService.getHeaders();
+    return this.http.delete('http://localhost:8080/match/' + username, { headers, responseType: 'text'});
   }
 
   /**
@@ -59,26 +65,6 @@ export class ConnectService {
     return this.http.get<any>('https://api.github.com/repos/' + username + '/' + repo + '/languages');
   }
 
-  /**
-   * acceptUser calls the GitDate API /accept endpoint to accept/like the user's profile
-   * @param username the user's username
-   */
-  public acceptUser(username: string) {
-    //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    const headers = this.getHeaders();
-    return this.http.get('http://localhost:8080/accept/' + username, { headers, responseType: 'text'});
-  }
-
-  /**
-   * rejectUser calls the GitDate API /reject endpoint to reject/dislike the user's profile
-   * @param username the user's username
-   */
-  public rejectUser(username: string) {
-    //const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    const headers = this.getHeaders();
-    return this.http.get('http://localhost:8080/reject/' + username, { headers, responseType: 'text'});
-  }
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private headersService: HeadersService) {}
 
 }

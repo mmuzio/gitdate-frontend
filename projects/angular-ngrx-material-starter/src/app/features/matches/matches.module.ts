@@ -5,10 +5,11 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { MatchesRoutingModule } from './matches-routing.module';
 import { MatchesComponent } from './matches/matches.component';
-import { MatchComponent } from './match/match.component';
+//import { MatchComponent } from './match/match.component';
+//import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
-  declarations: [MatchesComponent, MatchComponent],
+  declarations: [MatchesComponent],
   imports: [CommonModule, SharedModule, MatchesRoutingModule]
 })
 export class MatchesModule {}

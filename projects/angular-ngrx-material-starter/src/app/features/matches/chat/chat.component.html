@@ -1,0 +1,35 @@
+<!-- Start : Chat section  -->
+<ng-container>
+    <div class="outer">
+        <div class="container">
+            <ol class="chat" #scrollMe [scrollTop]="scrollMe.scrollHeight" *ngIf="messageList.length > 0">
+                <li [ngClass]="{'self': message.username == username , 'other': message.username != username }" *ngFor="let message of messageList">
+                    <div class="msg">
+                        <div class="user">{{ message.username }}</div>
+                        <p> {{ message.messageBody }} </p>
+                        <time>{{ message.submitTime | date:'short'}}</time>
+                    </div>
+                </li>
+            </ol> 
+        </div>
+    </div>
+    <!-- End : Chat section  -->
+    
+    <!-- Start : Chat Sending  -->
+    <div class="typezone">
+        <form class="example-form">
+          <mat-form-field class="message-field">
+            <textarea matInput 
+            [formControl]="commentFC"
+            name="messageBody"
+            maxlength="100"
+            #messageBody
+            (keyup)="onKey($event)" 
+            (keydown.enter)="addMessage(messageBody.value)">
+            </textarea>
+           </mat-form-field>
+        </form>
+    </div>
+    <!-- End : Chat Sending  -->
+</ng-container>
+

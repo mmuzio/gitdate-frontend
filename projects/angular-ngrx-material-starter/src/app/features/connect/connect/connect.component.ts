@@ -21,23 +21,26 @@ export class ConnectComponent implements OnInit {
 
   imageData: ResponseData[];
 
+  username: string;
+
   ngOnInit() {
     this.getUserProfile();
   }
 
   getUserProfile() {
     this.connectService.getUser().subscribe(username => {
+      this.username = username;
       this.connectService.getUserProfile(username).subscribe(response => {
         this.profileData = JSON.parse(atob(response.content));
         const length = this.profileData.repos.length;
         for (let i = 0; i < length; i++) {
-        this.connectService.getRepositoryLanguages(username, this.profileData.repos[i].url)
-          .subscribe(response => {
-            const languages = Object.keys(response);
-            this.profileData.repos[i] = {
-              ...this.profileData.repos[i],
-              languages: languages
-            };
+          this.connectService.getRepositoryLanguages(username, this.profileData.repos[i].url)
+            .subscribe(response => {
+              const languages = Object.keys(response);
+              this.profileData.repos[i] = {
+                ...this.profileData.repos[i],
+                languages: languages
+              };
           });
         };
       });
@@ -59,13 +62,13 @@ export class ConnectComponent implements OnInit {
   }
 
   acceptUser() {
-    this.connectService.acceptUser(this.profileData.name).subscribe(username => {
+    this.connectService.acceptUser(this.username).subscribe(username => {
       this.getUserProfile();
     });
   }
 
   rejectUser() {
-    this.connectService.rejectUser(this.profileData.name).subscribe(username => {
+    this.connectService.rejectUser(this.username).subscribe(username => {
       this.getUserProfile();
     });
 

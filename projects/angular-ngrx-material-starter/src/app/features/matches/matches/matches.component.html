@@ -1,1 +1,41 @@
-<p>matches works!</p>
+<div class="container">
+    <br><br>
+    <div class="row text-center">
+      <div class="col-sm-12"><h2>Your Matches</h2></div>
+    </div>
+    <br>
+    <ng-container>
+      <div class="row">
+        <div class="col-sm-12" [ngClass]="routeAnimationsElements">
+            <mat-card class="mat-card" *ngFor="let match of matchesList">
+                <mat-card-title>
+                  {{ match.username }}
+                </mat-card-title>
+                <mat-card-content></mat-card-content>
+                <mat-card-footer>
+                  <div>
+                    <button 
+                      mat-raised-button
+                      color="accent"
+                      class="languages"
+                      [ngClass]="routeAnimationsElements"
+                      (click)="viewMatch(match.username)">
+                      View Profile
+                    </button>
+                  </div>
+                  <div>
+                    <button 
+                      mat-raised-button
+                      color="accent"
+                      class="languages"
+                      [ngClass]="routeAnimationsElements"
+                      (click)="viewChat(match.match_id)">
+                      Chat
+                    </button>
+                  </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+      </div>
+    </ng-container>
+  </div>
