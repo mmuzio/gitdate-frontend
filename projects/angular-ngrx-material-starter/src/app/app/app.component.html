@@ -36,8 +36,11 @@
             </button>
           </span>
 
-          <button mat-button mat-stroked-button color="accent" *ngIf="!(isAuthenticated$ | async)" routerLink="login">
-            {{ 'ngrxtmp.menu.login' | translate }}
+          <button mat-button 
+            class="nav-button"
+            routerLink="login"
+            *ngIf="!(isAuthenticated$ | async)">
+            Login
           </button>
 
           <button *ngIf="(isAuthenticated$ | async)"

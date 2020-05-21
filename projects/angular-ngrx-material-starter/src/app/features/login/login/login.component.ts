@@ -15,6 +15,10 @@ import { LoginService } from '../login.service';
 import { RegisterUser } from '../../models/registerUser.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../../../environments/environment';
+//import { login } from '../../util/APIUtils';
+
+
 @Component({
   selector: 'ngrxtmp-login',
   templateUrl: './login.component.html',
@@ -22,7 +26,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
-
+  githubLogo = require('../../../../assets/github-logo.png').default;
+  githubAuthURL = GITHUB_AUTH_URL;
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   auth$: Observable<AuthState>;
   

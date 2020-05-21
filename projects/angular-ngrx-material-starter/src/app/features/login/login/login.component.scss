@@ -51,7 +51,7 @@ a {
 button {
 
     margin: 10px 10px 10px 10px;
-    width: 20%;
+    width: auto;
 
     &.actions-main {
         text-transform: uppercase;
@@ -75,3 +75,4 @@ button {
       width: 50%;
     }
 }
+

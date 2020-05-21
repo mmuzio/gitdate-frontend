@@ -5,6 +5,7 @@ import { ProfileService } from '../profile.service';
 import { ConnectService } from '../../connect/connect.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'ngrxtmp-profile',
@@ -25,11 +26,16 @@ export class ProfileComponent implements OnInit {
   imageData: ResponseData[];
 
   ngOnInit() {
-    this.getUserProfile();
+    this.getCurrentUser();
   }
 
-  getUserProfile() {
-    const username = localStorage.getItem('username');
+  getCurrentUser() {
+    this.profileService.getCurrentUser().subscribe(user => {
+      this.getUserProfile(user.username);
+    })
+  }
+
+  getUserProfile(username: string) {
     this.profileService.getUser(username).subscribe(response => {
       this.profileData = JSON.parse(atob(response.content));
       const length = this.profileData.repos.length;

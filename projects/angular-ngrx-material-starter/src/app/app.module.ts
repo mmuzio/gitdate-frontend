@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { Oauth2Component } from './features/login/oauth2/oauth2.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     // app
     AppRoutingModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, Oauth2Component],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

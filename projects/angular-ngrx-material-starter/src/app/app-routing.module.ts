@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Oauth2Component } from './features/login/oauth2/oauth2.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'oauth2/redirect',
+    component: Oauth2Component
   },
   {
     path: 'about',
@@ -47,7 +52,7 @@ const routes: Routes = [
   // useHash supports github.io demo page, remove in your app
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
+      useHash: false,
       scrollPositionRestoration: 'enabled',
       preloadingStrategy: PreloadAllModules
     })
