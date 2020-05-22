@@ -57,6 +57,14 @@
                     <fa-icon [icon]="['fab','github']"></fa-icon>
                     {{repo.url}}
                   </a>
+                  <button 
+                      mat-raised-button
+                      class="languages"
+                      color="accent"
+                      [ngClass]="routeAnimationsElements" 
+                      (click)="starRepository(repo.url)">
+                      <fa-icon icon="star"></fa-icon>
+                  </button>
                 </mat-card-title>
                 <mat-card-content>
                   {{repo.description}}

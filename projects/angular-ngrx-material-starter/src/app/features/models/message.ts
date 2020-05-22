@@ -1,3 +1,7 @@
+/**
+ * The Message class is used for encapsulating
+ * all of the message information
+ */
 export class Message {
     message_id: number;
     messageBody: string;

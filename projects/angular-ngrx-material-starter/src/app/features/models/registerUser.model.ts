@@ -1,3 +1,8 @@
+/**
+ * The RegisterUser class is used for encapsulating
+ * the user's login and register information, which
+ * is just username and password
+ */
 export class RegisterUser {
     username: string;
     password: string;

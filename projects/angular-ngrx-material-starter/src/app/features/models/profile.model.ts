@@ -1,3 +1,8 @@
+/**
+ * The profile class is used for encapsulating
+ * all of the user's profile information contained
+ * in their gitdate.json file
+ */
 export class Profile {
     public name: string;
     public languages: string[];

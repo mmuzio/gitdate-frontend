@@ -1,3 +1,7 @@
+/**
+ * The DisplayMessage class is used for encapsulating
+ * the message information to be displayed
+ */
 export class DisplayMessage {
 
     messageBody: string;

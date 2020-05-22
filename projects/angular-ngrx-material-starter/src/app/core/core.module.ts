@@ -65,7 +65,8 @@ import {
   faRocket,
   faPowerOff,
   faUserCircle,
-  faPlayCircle
+  faPlayCircle,
+  faStar
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
@@ -187,6 +188,7 @@ export class CoreModule {
       faPowerOff,
       faUserCircle,
       faPlayCircle,
+      faStar,
       faGithub,
       faMediumM,
       faTwitter,

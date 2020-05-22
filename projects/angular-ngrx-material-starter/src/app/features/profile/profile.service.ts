@@ -21,7 +21,15 @@ export class ProfileService {
 
     return this.http.get<User>(API_BASE_URL + '/user/me', { headers });
 
-}
+  }
+
+  public getCurrentUserGithub() {
+
+    const headers = this.headersService.getHeaders();
+
+    return this.http.get<User>(API_BASE_URL + '/user', { headers });
+
+  }
 
   constructor(private http: HttpClient, private headersService: HeadersService) {}
 

@@ -46,6 +46,7 @@ import {
   faBook,
   faThumbsUp,
   faThumbsDown,
+  faStar,
   faCode,
   faCodeBranch,
   faWrench
@@ -141,6 +142,7 @@ export class SharedModule {
       faBook,
       faThumbsUp,
       faThumbsDown,
+      faStar,
       faCode,
       faCodeBranch,
       faWrench

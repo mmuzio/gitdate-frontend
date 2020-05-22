@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
+    //this.getCurrentUserGithub();
   }
 
   /**
@@ -38,6 +39,16 @@ export class ProfileComponent implements OnInit {
     this.profileService.getCurrentUser().subscribe(user => {
       this.getUserProfile(user.username);
       localStorage.setItem('username', user.username);
+    })
+  }
+
+  /**
+   * getCurrentUserGithub makes an authenticated requested to the 
+   * Github API to get user details
+   */
+  getCurrentUserGithub() {
+    this.profileService.getCurrentUserGithub().subscribe(user => {
+      console.log(user);
     })
   }
 
@@ -66,6 +77,13 @@ export class ProfileComponent implements OnInit {
     this.getProfileImages(username);
   }
 
+  /**
+   * getProfileImages gets the current user's profile images
+   * from the assets/images directory in the user's gitdate repo
+   * the response is an array of type responsedata, where each element
+   * represents a file in the assets/images directory.
+   * @param username the current user's username
+   */
   getProfileImages(username: string) {
     this.connectService.getProfileImages(username).subscribe(response => {
       this.imageData = this.clean(response);

@@ -1,3 +1,7 @@
+/**
+ * The ResponseData class is used for encapsulating
+ * the response from a call to the Github REST API
+ */
 export class ResponseData {
     name: string;
     path: string;

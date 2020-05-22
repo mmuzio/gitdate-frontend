@@ -1,3 +1,8 @@
+/**
+ * The User class is used for encapsulating
+ * User properties associated with a 
+ * Github Oauth 2.0 authenticated user
+ */
 export class User {
     email: string;
     emailVerified: boolean;

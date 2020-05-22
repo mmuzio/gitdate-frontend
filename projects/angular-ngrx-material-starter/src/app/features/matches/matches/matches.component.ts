@@ -16,6 +16,7 @@ export class MatchesComponent implements OnInit {
   // make them animate when added to the DOM
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
+  // the list of matches as an array of DisplayMatches
   matchesList: DisplayMatch[];
 
   constructor(private matchesService: MatchesService,
@@ -28,10 +29,19 @@ export class MatchesComponent implements OnInit {
     });
   }
 
+  /**
+   * 
+   * @param username the username of the matched user
+   */
   viewMatch(username: string){
     this.router.navigate(['match', username]);
   }
 
+  /**
+   * viewChat navigates to the chat component which displays
+   * the chat between the current user and the matched user
+   * @param match_id the id of the match
+   */
   viewChat(match_id: number){
     this.router.navigate(['chat', match_id]);
   }
