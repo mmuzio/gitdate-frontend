@@ -1,10 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { User } from '../../models/user.model';
 import { MatchesService } from '../matches.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 import { DisplayMatch } from '../../models/displaymatch.model';
 
+/**
+ * MatchesComponent displays the authenticated user's matches
+ */
 @Component({
   selector: 'ngrxtmp-matches',
   templateUrl: './matches.component.html',
@@ -12,16 +15,29 @@ import { DisplayMatch } from '../../models/displaymatch.model';
 })
 export class MatchesComponent implements OnInit {
 
-  // an attribute that can be applied to DOM elements to
-  // make them animate when added to the DOM
+  /**
+   * An attribute that can be applied to DOM elements to
+   * make them animate when added to the DOM
+   */
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-  // the list of matches as an array of DisplayMatches
+  /**
+   * the list of matches as an array of DisplayMatches
+   */
   matchesList: DisplayMatch[];
 
+  /**
+   * Inject the necessary services
+   * @param matchesService Gets the authenticated user's matches
+   * @param route 
+   * @param router 
+   */
   constructor(private matchesService: MatchesService,
-              private route: ActivatedRoute, private router: Router) { }
+              private router: Router) { }
 
+  /**
+   * Get the list of matches on initial component load
+   */
   ngOnInit() {
     this.matchesService.listMatches().subscribe(matchesList => {
       this.matchesList  = matchesList
@@ -30,7 +46,7 @@ export class MatchesComponent implements OnInit {
   }
 
   /**
-   * 
+   * viewMatch navigates to the matched user's profile page
    * @param username the username of the matched user
    */
   viewMatch(username: string){
