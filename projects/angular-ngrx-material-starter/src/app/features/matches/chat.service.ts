@@ -6,39 +6,51 @@ import { environment } from '../../../environments/environment';
 import { DisplayMessage } from '../models/displaymessage';
 import { HeadersService } from '../headers/headers.service';
 
+/**
+ * ChatService calls the GitDate API to add and retrieve messages.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
+  /**
+   * The URL for messages
+   */
   private readonly URL = environment.apiBaseURL + '/message';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
+  /**
+   * A message to be added for a match
+   */
   message: Message;
 
+  /**
+   * The list of messages to be displayed for a match
+   */
   messageList: DisplayMessage[];
 
+  /**
+   * Calls the GitDate API to get all messages associated with a match
+   */
   public listMessages(match_id: number): Observable<DisplayMessage[]> {
     const headers = this.headersService.getHeaders();
     return this.http.get<DisplayMessage[]>(this.URL + '/match?match_id=' + match_id, { headers });
   }
 
-//   public addMessage(message: Message): Observable<Message> {
-//     console.log(message);
-//     const headers = this.headersService.getHeaders();
-//     return this.http.post<Message>(this.URL + '?message_id=' + message.message_id +
-//     '&messageBody=' + message.messageBody + '&match_id=' + message.match_id +
-//     '&username=' + message.username + '&submitTime=' + message.submitTime, { headers });
-//   }
-
+  /**
+   * Calls the GitDate API to add and persist a message 
+   * @param message The message to be added
+   */
   public addMessage(message: Message): Observable<Message> {
     console.log(message);
     const headers = this.headersService.getHeaders();
     return this.http.post<Message>(this.URL, message, { headers });
   }
 
+  /**
+   * Inject necessary services
+   * @param http The HTTP Client
+   * @param headersService Adds necessary headers, including JWT
+   */
   constructor(private http: HttpClient, private headersService: HeadersService) {}
 }
