@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { User } from '../../models/user.model';
 import { MatchesService } from '../matches.service';
 import { Router } from '@angular/router';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';

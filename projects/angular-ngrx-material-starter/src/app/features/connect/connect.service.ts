@@ -6,6 +6,11 @@ import { ACCESS_TOKEN } from '../../../environments/environment';
 import { constructor } from 'uuid';
 import { HeadersService } from '../headers/headers.service';
 
+/**
+ * ConnectService handles calls to GitDate API to get potential connections 
+ * and like or dislike their profile. It also makes calls to GitHub API to 
+ * populate the user's profile data.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -65,17 +70,22 @@ export class ConnectService {
     return this.http.get<any>('https://api.github.com/repos/' + username + '/' + repo + '/languages');
   }
 
+  /**
+   * starRepository stars a repository for the authenticated user
+   * @param username the user's github username
+   * @param repo the name of the user's github repo
+   */
   public starRepository(username: string, repo: string) {
-    // let headers = this.headersService.getHeaders();
-    // headers = headers.append('Content-Length', '0');
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    if (localStorage.getItem(ACCESS_TOKEN)) {
-      headers = headers.append('Authorization', 'JWT ' + localStorage.getItem(ACCESS_TOKEN));
-      headers = headers.append('Content-Length', '0');
-    }
+    let headers = this.headersService.getHeaders();
+    headers = headers.append('Content-Length', '0');
     return this.http.put('https://api.github.com/user/starred/' + username + '/' + repo, null, { headers } );
   }
 
+  /**
+   * Inject necessary services
+   * @param http The HTTP Client
+   * @param headersService Used to add headers, including JWT
+   */
   constructor(private http: HttpClient, private headersService: HeadersService) {}
 
 }

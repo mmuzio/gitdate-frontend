@@ -6,6 +6,9 @@ import { API_BASE_URL, ACCESS_TOKEN } from '../../../environments/environment';
 import { User } from '../models/user.model';
 import { HeadersService } from '../headers/headers.service';
 
+/**
+ * ProfileService 
+ */
 @Injectable({
   providedIn: 'root'
 })
