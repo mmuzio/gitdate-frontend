@@ -1,3 +1,7 @@
+/**
+ * The DisplayMatch class is used to encapsulate the match
+ * information to be displayed
+ */
 export class DisplayMatch {
 
     match_id: number;

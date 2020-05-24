@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Message } from '../models/message';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { DisplayMessage } from '../models/displaymessage';
