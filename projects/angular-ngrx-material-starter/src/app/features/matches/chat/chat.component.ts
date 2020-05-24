@@ -54,14 +54,22 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    clearInterval(this.interval); // switches your IntervalObservable off
+    // unsubscribes from the Interval Observable
+    clearInterval(this.interval);
   }
 
+  /**
+   * viewMessages retrieves an array of DisplayMessages
+   */
   viewMessages() {
     this.chatService.listMessages(this.match_id)
       .subscribe(messageList => this.messageList  = messageList);
   }
 
+  /**
+   * addMessage
+   * @param messageBody the text contained in the message body
+   */
   addMessage(messageBody: string): void {
 
     const newMessage = new Message(
