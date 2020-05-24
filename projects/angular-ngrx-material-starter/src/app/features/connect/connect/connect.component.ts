@@ -5,6 +5,10 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 import { ResponseData } from '../../models/responsedata.model';
 import { Profile } from '../../models/profile.model';
 
+/**
+ * ConnectComponent displays the user's profile and provides
+ * actions to like or dislike the user
+ */
 @Component({
   selector: 'ngrxtmp-connect',
   templateUrl: './connect.component.html',
@@ -12,22 +16,35 @@ import { Profile } from '../../models/profile.model';
 })
 export class ConnectComponent implements OnInit {
 
+  /**
+   * Inject necessary services
+   */
   constructor(private connectService: ConnectService,
     private route: ActivatedRoute, private router: Router) { }
 
-  // an attribute that can be applied to DOM elements to
-  // make them animate when added to the DOM
+  /**
+   * An attribute that can be applied to DOM elements to
+   * make them animate when added to the DOM
+   */
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-
-  // the currently displayed user's profile data
+  /**
+   * the currently displayed user's profile data
+   */
   profileData: Profile;
 
-  // the currently displayed user's image data
+  /**
+   * the currently displayed user's image data
+   */
   imageData: ResponseData[];
 
-  // the currently displayed user's username
+  /**
+   * the currently displayed user's username
+   */
   username: string;
 
+  /**
+   * Get a user's profile on initial component load
+   */
   ngOnInit() {
     this.getUserProfile();
   }
