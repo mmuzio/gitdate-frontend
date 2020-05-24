@@ -5,6 +5,9 @@ import { ProfileService } from '../profile.service';
 import { ConnectService } from '../../connect/connect.service';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 
+/**
+ * ProfileComponent displays the authenticated user's profile
+ */
 @Component({
   selector: 'ngrxtmp-profile',
   templateUrl: './profile.component.html',
@@ -12,43 +15,46 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 })
 export class ProfileComponent implements OnInit {
 
+  /**
+   * Inject necessary services
+   */
   constructor(private profileService: ProfileService,
               private connectService: ConnectService) { }
 
-  // an attribute that can be applied to DOM elements to
-  // make them animate when added to the DOM
+  /**
+   * an attribute that can be applied to DOM elements to
+   * make them animate when added to the DOM
+   */
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   // contains the current user's profile information
+  /**
+   * 
+   */
   profileData: Profile; 
 
   // an array of elements that contain information about
   // each profile image
+  /**
+   * 
+   */
   imageData: ResponseData[];
 
+  /**
+   * Get the user's profile on initial component load
+   */
   ngOnInit() {
     this.getCurrentUser();
-    //this.getCurrentUserGithub();
   }
 
   /**
-   * getCurrentUser gets the current user associated with the
-   * session and extracts username to get their profile
+   * getCurrentUser gets the authenticated user 
+   * and extracts username to get their profile
    */
   getCurrentUser() {
     this.profileService.getCurrentUser().subscribe(user => {
       this.getUserProfile(user.username);
       localStorage.setItem('username', user.username);
-    })
-  }
-
-  /**
-   * getCurrentUserGithub makes an authenticated requested to the 
-   * Github API to get user details
-   */
-  getCurrentUserGithub() {
-    this.profileService.getCurrentUserGithub().subscribe(user => {
-      console.log(user);
     })
   }
 
