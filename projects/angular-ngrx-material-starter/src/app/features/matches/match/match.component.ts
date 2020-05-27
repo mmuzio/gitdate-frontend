@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../profile/profile.service';
-import { ConnectService } from '../../connect/connect.service';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 import { Profile } from '../../models/profile.model';
 import { ResponseData } from '../../models/responsedata.model';
@@ -19,11 +18,10 @@ export class MatchComponent implements OnInit {
   /**
    * Inject necessary services
    * @param profileService the profile service
-   * @param connectService the connect service
    * @param route the activated route service
    */
   constructor(private profileService: ProfileService,
-    private connectService: ConnectService, private route: ActivatedRoute) { }
+              private route: ActivatedRoute) { }
 
   /**
    * The matched user's username
@@ -63,40 +61,33 @@ export class MatchComponent implements OnInit {
   * @param username The current user's username
   */
   getUserProfile(username: string) {
-    /**
-     * Get the matched user's profile information
-     */
-    this.profileService.getUser(username).subscribe(profileresp => {
-    /**
-     * Parse the response
-     */
-    this.profileData = JSON.parse(atob(profileresp.content));
-    /**
-     * For each repository in the response, get programming languages
-     */
-    for (let i = 0; i < this.profileData.repos.length; i++) {
-      this.connectService.getRepositoryLanguages(username, this.profileData.repos[i].url)
-      .subscribe(languageresp => {
-        /**
-         * Parse the response, where the keys contain languages
-         * and values contain lines of code for each language.
-         * Return a new array of languages
-         */
-        const languages = Object.keys(languageresp);
-        /**
-         * Add array of languages to repo object
-         */
-        this.profileData.repos[i] = {
-          ...this.profileData.repos[i],
-          languages: languages
-        };
+    // Get the matched user's profile information
+    this.profileService.getUserProfile(username).subscribe(profileresp => {
+      // Parse the response
+      this.profileData = JSON.parse(atob(profileresp.content));
+      // For each repository in the response, get programming languages
+      this.getRepositoryLanguages(username);
+      // Get profile images for the current user
+      this.getProfileImages(username);
+    });
+  }
+
+  /**
+   * getRepositoryLanguages gets languages for each repo in gitdate profile
+   * @param username the user's username
+   */
+  getRepositoryLanguages(username: string) {
+    const length = this.profileData.repos.length;
+    for (let i = 0; i < length; i++) {
+      this.profileService.getRepositoryLanguages(username, this.profileData.repos[i].url)
+        .subscribe(languageresp => {
+          const languages = Object.keys(languageresp);
+          this.profileData.repos[i] = {
+            ...this.profileData.repos[i],
+            languages: languages
+          };
       });
     };
-  });
-  /**
-   * Get profile images for the current user
-   */
-  this.getProfileImages(username);
   }
 
   /**
@@ -107,15 +98,11 @@ export class MatchComponent implements OnInit {
    * @param username The current user's username
    */
   getProfileImages(username: string) {
-    this.connectService.getProfileImages(username).subscribe(response => {
-      /**
-       * Remove non-image files 
-       */
+    this.profileService.getProfileImages(username).subscribe(response => {
+      // Remove non-image files
       this.imageData = this.clean(response);
     }, err => {
-      /**
-       * If no images are received, provide fallback profile image
-       */
+      // If no images are received, provide fallback profile image
       this.imageData = [new ResponseData('Images Not Found', null, null, null, null, null , null, 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg', null, null, null, null)];
     });
   }

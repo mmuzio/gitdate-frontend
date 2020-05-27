@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ConnectService } from '../connect.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
+
+import { ProfileService } from '../../profile/profile.service';
+import { ConnectService } from '../connect.service';
+
 import { ResponseData } from '../../models/responsedata.model';
 import { Profile } from '../../models/profile.model';
 
@@ -20,7 +22,7 @@ export class ConnectComponent implements OnInit {
    * Inject necessary services
    */
   constructor(private connectService: ConnectService,
-    private route: ActivatedRoute, private router: Router) { }
+              private profileService: ProfileService) { }
 
   /**
    * An attribute that can be applied to DOM elements to
@@ -46,7 +48,7 @@ export class ConnectComponent implements OnInit {
    * Get a user's profile on initial component load
    */
   ngOnInit() {
-    this.getUserProfile();
+    this.getRandomUserProfile();
   }
 
   /**
@@ -54,27 +56,34 @@ export class ConnectComponent implements OnInit {
    * including profiledata from gitdate.json, languages from each
    * repo in gitdate.json, and profile images in assets/images
    */
-  getUserProfile() {
-    this.connectService.getUser().subscribe(username => {
+  getRandomUserProfile() {
+    this.connectService.getRandomUser().subscribe(username => {
       this.username = username;
-      this.connectService.getUserProfile(username).subscribe(response => {
+      this.profileService.getUserProfile(username).subscribe(response => {
         this.profileData = JSON.parse(atob(response.content));
-        const length = this.profileData.repos.length;
-        for (let i = 0; i < length; i++) {
-          this.connectService.getRepositoryLanguages(username, this.profileData.repos[i].url)
-            .subscribe(langResponse => {
-              const languages = Object.keys(langResponse);
-              this.profileData.repos[i] = {
-                ...this.profileData.repos[i],
-                languages: languages
-              };
-          });
-        };
+        this.getRepositoryLanguages(username);
+        this.getProfileImages(username);
       });
-      this.getProfileImages(username);
-      
     });
   };
+
+  /**
+   * getRepositoryLanguages gets languages for each repo in gitdate profile
+   * @param username the user's username
+   */
+  getRepositoryLanguages(username: string) {
+    const length = this.profileData.repos.length;
+    for (let i = 0; i < length; i++) {
+      this.profileService.getRepositoryLanguages(username, this.profileData.repos[i].url)
+        .subscribe(languageresp => {
+          const languages = Object.keys(languageresp);
+          this.profileData.repos[i] = {
+            ...this.profileData.repos[i],
+            languages: languages
+          };
+      });
+    };
+  }
 
   /**
    * getProfileImages gets the current user's profile images
@@ -84,7 +93,7 @@ export class ConnectComponent implements OnInit {
    * @param username the current user's username
    */
   getProfileImages(username: string) {
-    this.connectService.getProfileImages(username).subscribe(response => {
+    this.profileService.getProfileImages(username).subscribe(response => {
       this.imageData = this.clean(response);
     }, err => {
       this.imageData = [new ResponseData('Images Not Found', null, null, null, null, null , null, 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg', null, null, null, null)];
@@ -107,7 +116,7 @@ export class ConnectComponent implements OnInit {
    * @param repo the repository to star
    */
   starRepository(repo: string) {
-    this.connectService.starRepository(this.username, repo).subscribe();
+    this.profileService.starRepository(this.username, repo).subscribe();
   }
 
   /**
@@ -115,7 +124,7 @@ export class ConnectComponent implements OnInit {
    */
   acceptUser() {
     this.connectService.acceptUser(this.username).subscribe(username => {
-      this.getUserProfile();
+      this.getRandomUserProfile();
     });
   }
 
@@ -124,9 +133,8 @@ export class ConnectComponent implements OnInit {
    */
   rejectUser() {
     this.connectService.rejectUser(this.username).subscribe(username => {
-      this.getUserProfile();
+      this.getRandomUserProfile();
     });
-
   }
 
 }

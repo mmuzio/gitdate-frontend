@@ -17,9 +17,16 @@ import { HeadersService } from '../headers/headers.service';
 export class ConnectService {
 
   /**
+   * Inject necessary services
+   * @param http The HTTP Client
+   * @param headersService Used to add headers, including JWT
+   */
+  constructor(private http: HttpClient, private headersService: HeadersService) {}
+
+  /**
    * getUser returns a random gitdate user's github username
    */
-  public getUser() {
+  public getRandomUser() {
     const headers = this.headersService.getHeaders();
     return this.http.get('http://localhost:8080/connect', { headers, responseType: 'text'});
   }
@@ -41,51 +48,5 @@ export class ConnectService {
     const headers = this.headersService.getHeaders();
     return this.http.delete('http://localhost:8080/match/' + username, { headers, responseType: 'text'});
   }
-
-  /**
-   * getUserProfile calls the Github Repo API to get the contents of the gitdate.json file
-   * The gitdate.json file contains the user's profile data in json format
-   * @param username the user's github username
-   */
-  public getUserProfile(username: any): Observable<ResponseData> {
-    return this.http.get<ResponseData>('https://api.github.com/repos/' + username + '/gitdatetest/contents/gitdate.json?ref=master');
-  }
-
-  /**
-   * getProfileImages calls the Github Repo API to get the contents of the assets/images directory
-   * The assets/images directory contains the user's profile images
-   * @param username the user's github username
-   */
-  public getProfileImages(username: any): Observable<ResponseData[]> {
-    return this.http.get<ResponseData[]>('https://api.github.com/repos/' + username + '/gitdatetest/contents/assets/images');
-  }
-
-  /**
-   * getRepositoryLanguages calls the Github Repo API to get the programming languages
-   * associated with a particular repo
-   * @param username the user's github username
-   * @param repo the name of the user's github repo 
-   */
-  public getRepositoryLanguages(username: string, repo: string): Observable<any> {
-    return this.http.get<any>('https://api.github.com/repos/' + username + '/' + repo + '/languages');
-  }
-
-  /**
-   * starRepository stars a repository for the authenticated user
-   * @param username the user's github username
-   * @param repo the name of the user's github repo
-   */
-  public starRepository(username: string, repo: string) {
-    let headers = this.headersService.getHeaders();
-    headers = headers.append('Content-Length', '0');
-    return this.http.put('https://api.github.com/user/starred/' + username + '/' + repo, null, { headers } );
-  }
-
-  /**
-   * Inject necessary services
-   * @param http The HTTP Client
-   * @param headersService Used to add headers, including JWT
-   */
-  constructor(private http: HttpClient, private headersService: HeadersService) {}
 
 }

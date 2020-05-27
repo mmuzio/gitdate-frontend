@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Profile } from '../../models/profile.model';
 import { ResponseData } from '../../models/responsedata.model';
 import { ProfileService } from '../profile.service';
-import { ConnectService } from '../../connect/connect.service';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 
 /**
@@ -18,8 +17,7 @@ export class ProfileComponent implements OnInit {
   /**
    * Inject necessary services
    */
-  constructor(private profileService: ProfileService,
-              private connectService: ConnectService) { }
+  constructor(private profileService: ProfileService) { }
 
   /**
    * an attribute that can be applied to DOM elements to
@@ -65,22 +63,31 @@ export class ProfileComponent implements OnInit {
    * @param username the current user's username
    */
   getUserProfile(username: string) {
-    this.profileService.getUser(username).subscribe(profileresp => {
+    this.profileService.getUserProfile(username).subscribe(profileresp => {
       this.profileData = JSON.parse(atob(profileresp.content));
-      const length = this.profileData.repos.length;
-      for (let i = 0; i < length; i++) {
-        this.connectService.getRepositoryLanguages(username, this.profileData.repos[i].url)
-          .subscribe(languageresp => {
-            const languages = Object.keys(languageresp);
-            this.profileData.repos[i] = {
-              ...this.profileData.repos[i],
-              languages: languages
-            };
-        });
-      };
+      // Get Repository Languages for the current user
+      this.getRepositoryLanguages(username);
+      // Get profile images for the current user
+      this.getProfileImages(username);
     });
-    // get profile images for the current user
-    this.getProfileImages(username);
+  }
+
+  /**
+   * getRepositoryLanguages gets languages for each repo in gitdate profile
+   * @param username the current user's username
+   */
+  getRepositoryLanguages(username: string) {
+    const length = this.profileData.repos.length;
+    for (let i = 0; i < length; i++) {
+      this.profileService.getRepositoryLanguages(username, this.profileData.repos[i].url)
+        .subscribe(languageresp => {
+          const languages = Object.keys(languageresp);
+          this.profileData.repos[i] = {
+            ...this.profileData.repos[i],
+            languages: languages
+          };
+      });
+    };
   }
 
   /**
@@ -91,7 +98,7 @@ export class ProfileComponent implements OnInit {
    * @param username the current user's username
    */
   getProfileImages(username: string) {
-    this.connectService.getProfileImages(username).subscribe(response => {
+    this.profileService.getProfileImages(username).subscribe(response => {
       this.imageData = this.clean(response);
     }, err => {
       // if no images are received, provide fallback profile image
