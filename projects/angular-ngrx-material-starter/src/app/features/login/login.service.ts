@@ -15,7 +15,7 @@ import { HeadersService } from '../helpers/headers.service';
 export class LoginService {
 
   /**
-   * URL to register endpoint
+   * URL to user endpoint
    */
   private readonly URL = API_BASE_URL + '/user/me'; 
 

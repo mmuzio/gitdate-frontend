@@ -35,12 +35,39 @@ import {
 } from './settings.selectors';
 import { State } from './settings.model';
 
+/**
+ * The settings storage key
+ */
 export const SETTINGS_KEY = 'SETTINGS';
 
+/**
+ * Initial effect trigger
+ */
 const INIT = of('ngrxtmp-init-effect-trigger');
 
+/**
+ * SettingsEffects includes side effects for settings actions
+ */
 @Injectable()
 export class SettingsEffects {
+
+  /**
+   * The current hour
+   */
+  hour = 0;
+  
+  /**
+   * Inject necessary services
+   * @param actions$ 
+   * @param store The NGRX store
+   * @param router The Angular router
+   * @param overlayContainer 
+   * @param localStorageService The localStorage service
+   * @param titleService The title service
+   * @param animationsService The animations service
+   * @param translateService The translate service
+   * @param ngZone The Angular ngZone service
+   */  
   constructor(
     private actions$: Actions,
     private store: Store<State>,
@@ -53,7 +80,9 @@ export class SettingsEffects {
     private ngZone: NgZone
   ) {}
 
-  hour = 0;
+  /**
+   * changeHour gets the current hour and dispatches the change hour action
+   */
   changeHour = this.ngZone.runOutsideAngular(() =>
     setInterval(() => {
       const hour = new Date().getHours();
@@ -66,6 +95,9 @@ export class SettingsEffects {
     }, 60_000)
   );
 
+  /**
+   * persistSettings calls localStorage to persist the user's settings
+   */
   persistSettings = createEffect(
     () =>
       this.actions$.pipe(
@@ -86,6 +118,9 @@ export class SettingsEffects {
     { dispatch: false }
   );
 
+  /**
+   * updateRouteAnimationType updates animation settings
+   */
   updateRouteAnimationType = createEffect(
     () =>
       merge(
@@ -113,6 +148,9 @@ export class SettingsEffects {
     { dispatch: false }
   );
 
+  /**
+   * updateTheme updates theme settings
+   */
   updateTheme = createEffect(
     () =>
       merge(INIT, this.actions$.pipe(ofType(actionSettingsChangeTheme))).pipe(
@@ -132,6 +170,9 @@ export class SettingsEffects {
     { dispatch: false }
   );
 
+  /**
+   * setTranslateServiceLanguage sets the user's preferred language
+   */
   setTranslateServiceLanguage = createEffect(
     () =>
       this.store.pipe(
@@ -142,6 +183,9 @@ export class SettingsEffects {
     { dispatch: false }
   );
 
+  /**
+   * setTitle updates the app title and translates it
+   */
   setTitle = createEffect(
     () =>
       merge(

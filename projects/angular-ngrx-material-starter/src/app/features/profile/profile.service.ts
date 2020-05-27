@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { ResponseData } from '../models/responsedata.model';
-import { API_BASE_URL, ACCESS_TOKEN } from '../../../environments/environment';
+import { API_BASE_URL } from '../../../environments/environment';
 import { User } from '../models/user.model';
 import { HeadersService } from '../helpers/headers.service';
 

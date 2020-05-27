@@ -16,10 +16,15 @@ import { CleanerService } from '../../helpers/cleaner.service';
 export class ProfileComponent implements OnInit {
 
   /**
-   * Inject necessary services
+   * An array of elements that contain information about 
+   * each profile image
    */
-  constructor(private profileService: ProfileService,
-              private cleanerService: CleanerService) { }
+  imageData: ResponseData[];
+
+  /**
+   * Contains the current user's profile information
+   */
+  profileData: Profile; 
 
   /**
    * an attribute that can be applied to DOM elements to
@@ -27,18 +32,11 @@ export class ProfileComponent implements OnInit {
    */
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-  // contains the current user's profile information
   /**
-   * 
+   * Inject necessary services
    */
-  profileData: Profile; 
-
-  // an array of elements that contain information about
-  // each profile image
-  /**
-   * 
-   */
-  imageData: ResponseData[];
+  constructor(private profileService: ProfileService,
+              private cleanerService: CleanerService) { }
 
   /**
    * Get the user's profile on initial component load

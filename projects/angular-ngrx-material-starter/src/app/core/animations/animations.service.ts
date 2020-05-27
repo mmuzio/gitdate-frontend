@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * AnimationsService updates animation settings
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class AnimationsService {
+
   constructor() {
     AnimationsService.routeAnimationType = 'NONE';
   }
@@ -14,6 +18,11 @@ export class AnimationsService {
     return AnimationsService.routeAnimationType === type;
   }
 
+  /**
+   * updateRouteAnimationType updates routeAnimationType
+   * @param pageAnimations Are page animations on?
+   * @param elementsAnimations Are element animations on?
+   */
   updateRouteAnimationType(
     pageAnimations: boolean,
     elementsAnimations: boolean
@@ -29,4 +38,7 @@ export class AnimationsService {
   }
 }
 
+/**
+ * The route animation types
+ */
 export type RouteAnimationType = 'ALL' | 'PAGE' | 'ELEMENTS' | 'NONE';
