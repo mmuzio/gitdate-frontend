@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 
 import { ProfileService } from '../../profile/profile.service';
 import { ConnectService } from '../connect.service';
+import { CleanerService } from '../../helpers/cleaner.service';
 
 import { ResponseData } from '../../models/responsedata.model';
 import { Profile } from '../../models/profile.model';
-import { CleanerService } from '../../helpers/cleaner.service';
 
 /**
  * ConnectComponent displays the user's profile and provides
@@ -20,31 +21,33 @@ import { CleanerService } from '../../helpers/cleaner.service';
 export class ConnectComponent implements OnInit {
 
   /**
-   * Inject necessary services
+   * the currently displayed user's image data
    */
-  constructor(private connectService: ConnectService,
-              private profileService: ProfileService,
-              private cleanerService: CleanerService) { }
+  imageData: ResponseData[];
 
-  /**
-   * An attribute that can be applied to DOM elements to
-   * make them animate when added to the DOM
-   */
-  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   /**
    * the currently displayed user's profile data
    */
   profileData: Profile;
 
   /**
-   * the currently displayed user's image data
+   * An attribute that can be applied to DOM elements to
+   * make them animate when added to the DOM
    */
-  imageData: ResponseData[];
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   /**
    * the currently displayed user's username
    */
   username: string;
+
+  /**
+   * Inject necessary services
+   */
+  constructor(private connectService: ConnectService,
+              private profileService: ProfileService,
+              private cleanerService: CleanerService
+              ) { }
 
   /**
    * Get a user's profile on initial component load

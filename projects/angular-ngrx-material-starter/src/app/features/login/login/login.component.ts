@@ -4,21 +4,15 @@ import { Observable } from 'rxjs';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 
-import {
-  authLogin,
-  authLoginSuccess,
-  authLoginFailure
-} from '../../../core/auth/auth.actions';
 import { AuthState, State } from '../../../core/auth/auth.models';
 import { selectAuth } from '../../../core/auth/auth.selectors';
-import { LoginService } from '../login.service';
-import { RegisterUser } from '../../models/registerUser.model';
-import { ActivatedRoute, Router } from '@angular/router';
 
-import { GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../../../environments/environment';
-//import { login } from '../../util/APIUtils';
+import { GITHUB_AUTH_URL } from '../../../../environments/environment';
 
-
+/**
+ * LoginComponent is mostly presentation. It contains router link buttons 
+ * that give the user the option to sign in with GitHub or get more info
+ */
 @Component({
   selector: 'ngrxtmp-login',
   templateUrl: './login.component.html',
@@ -26,35 +20,39 @@ import { GITHUB_AUTH_URL, ACCESS_TOKEN } from '../../../../environments/environm
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
-  githubLogo = require('../../../../assets/github-logo.png').default;
-  githubAuthURL = GITHUB_AUTH_URL;
-  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  auth$: Observable<AuthState>;
-  
-  constructor(private store: Store<State>, private loginService: LoginService,
-              private route: ActivatedRoute, private router: Router) {}
 
+  /**
+   * The current authentication status
+   */
+  auth$: Observable<AuthState>;
+
+  /**
+   * The URL for GitHub OAuth authentication
+   */
+  githubAuthURL = GITHUB_AUTH_URL;
+
+  /**
+   * The GitHub Logo
+   */
+  githubLogo = require('../../../../assets/github-logo.png').default;
+
+  /**
+   * An attribute that can be applied to DOM elements to
+   * make them animate when added to the DOM
+   */
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  
+  /**
+   * Inject necessary services
+   * @param store The NGRX Store
+   */
+  constructor(private store: Store<State>) {}
+
+  /**
+   * Get the current authentication state
+   */
   ngOnInit() {
     this.auth$ = this.store.pipe(select(selectAuth));
-  }
-
-  onLogin(username: string, password: string) {
-    this.store.dispatch(authLogin({username, password}));
-    localStorage.setItem('username', username);
-    this.router.navigateByUrl('/connect');
-  }
-
-  onRegister(username: string, password: string) {
-
-    const newUser = new RegisterUser(
-      username,
-      password
-    );
-
-    this.loginService.addUser(newUser as RegisterUser)
-     .subscribe(response => {
-      this.router.navigate(['profile']);
-    });
   }
 
 }

@@ -1,10 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, TemplateRef, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../profile/profile.service';
+
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
+
+import { ProfileService } from '../../profile/profile.service';
+import { CleanerService } from '../../helpers/cleaner.service';
+
 import { Profile } from '../../models/profile.model';
 import { ResponseData } from '../../models/responsedata.model';
-import { CleanerService } from '../../helpers/cleaner.service';
 
 /**
  * The MatchComponent displays the matched user's profile
@@ -17,18 +20,15 @@ import { CleanerService } from '../../helpers/cleaner.service';
 export class MatchComponent implements OnInit {
 
   /**
-   * Inject necessary services
-   * @param profileService the profile service
-   * @param route the activated route service
+   * An array of elements that contain information about
+   * each profile image
    */
-  constructor(private profileService: ProfileService,
-              private cleanerService: CleanerService,
-              private route: ActivatedRoute) { }
-          
+  imageData: ResponseData[];
+
   /**
-   * The matched user's username
+   * Contains the current user's profile information
    */
-  username: string;
+  profileData: Profile;
 
   /**
    * An attribute that can be applied to DOM elements to
@@ -37,15 +37,19 @@ export class MatchComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   /**
-   * Contains the current user's profile information
+   * The matched user's username
    */
-  profileData: Profile; 
+  username: string;
+ 
 
   /**
-   * An array of elements that contain information about
-   * each profile image
+   * Inject necessary services
+   * @param profileService the profile service
+   * @param route the activated route service
    */
-  imageData: ResponseData[];
+  constructor(private profileService: ProfileService,
+              private cleanerService: CleanerService,
+              private route: ActivatedRoute) { }
 
   /**
    * Get the matched user's username from the route snapshot, 

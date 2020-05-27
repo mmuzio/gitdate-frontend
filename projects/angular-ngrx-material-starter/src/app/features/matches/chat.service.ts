@@ -15,11 +15,6 @@ import { HeadersService } from '../helpers/headers.service';
 export class ChatService {
 
   /**
-   * The URL for messages
-   */
-  private readonly URL = environment.apiBaseURL + '/message';
-
-  /**
    * A message to be added for a match
    */
   message: Message;
@@ -30,12 +25,18 @@ export class ChatService {
   messageList: DisplayMessage[];
 
   /**
-   * Calls the GitDate API to get all messages associated with a match
+   * The URL for messages
    */
-  public listMessages(match_id: number): Observable<DisplayMessage[]> {
-    const headers = this.headersService.getHeaders();
-    return this.http.get<DisplayMessage[]>(this.URL + '/match?match_id=' + match_id, { headers });
-  }
+  private readonly URL = environment.apiBaseURL + '/message';
+
+  /**
+   * Inject necessary services
+   * @param http The HTTP Client
+   * @param headersService Adds necessary headers, including JWT
+   */
+  constructor(private http: HttpClient, 
+              private headersService: HeadersService
+              ) {}
 
   /**
    * Calls the GitDate API to add and persist a message 
@@ -48,9 +49,11 @@ export class ChatService {
   }
 
   /**
-   * Inject necessary services
-   * @param http The HTTP Client
-   * @param headersService Adds necessary headers, including JWT
+   * Calls the GitDate API to get all messages associated with a match
    */
-  constructor(private http: HttpClient, private headersService: HeadersService) {}
+  public listMessages(match_id: number): Observable<DisplayMessage[]> {
+    const headers = this.headersService.getHeaders();
+    return this.http.get<DisplayMessage[]>(this.URL + '/match?match_id=' + match_id, { headers });
+  }
+
 }
