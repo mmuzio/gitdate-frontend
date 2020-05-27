@@ -3,7 +3,7 @@ import { authLogin, authLoginSuccess, authLoginFailure, authLogout } from './aut
 import { createReducer, on, Action } from '@ngrx/store';
 
 /**
- * initialState for authentication
+ * The initial authentication state
  */
 export const initialState: AuthState = {
   username: '',
@@ -24,7 +24,7 @@ const reducer = createReducer(
 /**
  * authReducer takes old state and an action and returns new state
  * @param state The authentication state
- * @param action The authenticate action
+ * @param action The authentication action
  */
 export function authReducer(
   state: AuthState | undefined,

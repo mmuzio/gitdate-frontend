@@ -15,12 +15,18 @@ import { RouterStateUrl } from './router/router.state';
 import { settingsReducer } from './settings/settings.reducer';
 import { SettingsState } from './settings/settings.model';
 
+/**
+ * The overall application reducer, composed of feature reducers
+ */
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
   settings: settingsReducer,
   router: routerReducer
 };
 
+/**
+ * The application meta reducer, composed of meta reducers
+ */
 export const metaReducers: MetaReducer<AppState>[] = [
   initStateFromLocalStorage
 ];
@@ -31,20 +37,32 @@ if (!environment.production) {
   }
 }
 
+/**
+ * Select the AuthState slice from application state
+ */
 export const selectAuthState = createFeatureSelector<AppState, AuthState>(
   'auth'
 );
 
+/**
+ * Select the SettingsState slice from application state
+ */
 export const selectSettingsState = createFeatureSelector<
   AppState,
   SettingsState
 >('settings');
 
+/**
+ * Select the RouterStateUrl slice from application state
+ */
 export const selectRouterState = createFeatureSelector<
   AppState,
   RouterReducerState<RouterStateUrl>
 >('router');
 
+/**
+ * The overall application state, composed of feature states
+ */
 export interface AppState {
   auth: AuthState;
   settings: SettingsState;

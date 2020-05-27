@@ -9,11 +9,23 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-/** Passes HttpErrorResponse to application-wide error handler */
+/** 
+ * Passes HttpErrorResponse to application-wide error handler  
+ */
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
+
+  /**
+   * Injects necessary services
+   * @param injector The Angular injector
+   */
   constructor(private injector: Injector) {}
 
+  /**
+   * intercepts the HTTP request and returns an error handler
+   * @param request The incoming request
+   * @param next Intercepts and transforms/handles the request
+   */
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler

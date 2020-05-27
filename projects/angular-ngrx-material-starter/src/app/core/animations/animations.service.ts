@@ -8,12 +8,22 @@ import { Injectable } from '@angular/core';
 })
 export class AnimationsService {
 
+  /**
+   * Set routeAnimationType to NONE
+   */
   constructor() {
     AnimationsService.routeAnimationType = 'NONE';
   }
 
+  /**
+   * The route animation type, default to NONE
+   */
   private static routeAnimationType: RouteAnimationType = 'NONE';
 
+  /**
+   * Is the current animation type the same as the input?
+   * @param type The route animation type
+   */
   static isRouteAnimationsType(type: RouteAnimationType) {
     return AnimationsService.routeAnimationType === type;
   }

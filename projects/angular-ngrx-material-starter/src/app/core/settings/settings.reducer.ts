@@ -11,6 +11,9 @@ import {
 } from './settings.actions';
 import { Action, createReducer, on } from '@ngrx/store';
 
+/**
+ * The initial settings state
+ */
 export const initialState: SettingsState = {
   language: 'en',
   theme: 'DEFAULT-THEME',
@@ -23,6 +26,9 @@ export const initialState: SettingsState = {
   hour: 0
 };
 
+/**
+ * Reducer to update settings state
+ */
 const reducer = createReducer(
   initialState,
   on(
@@ -45,6 +51,11 @@ const reducer = createReducer(
   )
 );
 
+/**
+ * settingsReducer takes old state and an action and returns new state
+ * @param state The settings state
+ * @param action The settings action
+ */
 export function settingsReducer(
   state: SettingsState | undefined,
   action: Action
