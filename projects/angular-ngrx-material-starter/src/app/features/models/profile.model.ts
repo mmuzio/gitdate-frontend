@@ -4,9 +4,25 @@
  * in their gitdate.json file
  */
 export class Profile {
+
+    /**
+     * The user's profile name
+     */
     public name: string;
+
+    /**
+     * The user's preffered languages 
+     */
     public languages: string[];
+
+    /**
+     * The user's preffered technologies
+     */
     public technologies: string[];
+
+    /**
+     * The user's highlighted repos
+     */
     public repos: [{
         name: string;
         description: string;
@@ -14,6 +30,13 @@ export class Profile {
         languages?: string[]
     }];
 
+    /**
+     * Create a new profile
+     * @param name The profile name
+     * @param languages The profile languages
+     * @param technologies The profile technologies
+     * @param repos The profile repos
+     */
     constructor(name: string,
                 languages: string[],
                 technologies: string[],
@@ -28,30 +51,5 @@ export class Profile {
         this.repos = repos;
 
     }
-
-    // public getName(): string {
-    //     return this.name;
-    // }
-    // public getLanguages(): string[] {
-    //     return this.languages;
-    // }
-    // public getTechnologies(): string[] {
-    //     return this.languages;
-    // }
-    // public getRepos(): [{name: string, description: string, url: string}] {
-    //     return this.repos;
-    // }
-
-    // public setName(name: string): void {
-    //     this.name = name;
-    // }
-    // public setLanguages(languages: string[]): void {
-    //     this.languages = languages;
-    // }
-    // public setTechnologies(technologies: string[]): void {
-    //     this.technologies = technologies;
-    // }
-    // public setRepos(repos: [{name: string, description: string, url: string}]): void {
-    //     this.repos = repos;
-    // }
+    
 }
