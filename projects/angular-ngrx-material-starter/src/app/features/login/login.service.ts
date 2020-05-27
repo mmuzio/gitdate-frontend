@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { User } from '../models/user.model';
 import { API_BASE_URL } from '../../../environments/environment';
-import { HeadersService } from '../headers/headers.service';
+import { HeadersService } from '../helpers/headers.service';
 
 /**
  * LoginService is used to register the user and get the current user. 

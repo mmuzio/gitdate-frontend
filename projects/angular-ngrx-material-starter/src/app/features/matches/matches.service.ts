@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment, ACCESS_TOKEN } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HeadersService } from '../headers/headers.service';
+import { HeadersService } from '../helpers/headers.service';
 import { DisplayMatch } from '../models/displaymatch.model';
 
 /**

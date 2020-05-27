@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { ResponseData } from '../models/responsedata.model';
 import { API_BASE_URL, ACCESS_TOKEN } from '../../../environments/environment';
 import { User } from '../models/user.model';
-import { HeadersService } from '../headers/headers.service';
+import { HeadersService } from '../helpers/headers.service';
 
 /**
  * ProfileService makes calls to GitHub API to 
@@ -20,7 +20,8 @@ export class ProfileService {
    * @param http The HTTP Client
    * @param headersService Adds necessary headers, including JWT
    */
-  constructor(private http: HttpClient, private headersService: HeadersService) {}
+  constructor(private http: HttpClient, 
+              private headersService: HeadersService) {}
 
   /**
    * Get the authenticated user's details from GitDate API

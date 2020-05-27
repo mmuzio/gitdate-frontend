@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { ResponseData } from '../models/responsedata.model';
 import { ACCESS_TOKEN } from '../../../environments/environment';
 import { constructor } from 'uuid';
-import { HeadersService } from '../headers/headers.service';
+import { HeadersService } from '../helpers/headers.service';
 
 /**
  * ConnectService handles calls to GitDate API to get potential connections 
@@ -21,7 +21,8 @@ export class ConnectService {
    * @param http The HTTP Client
    * @param headersService Used to add headers, including JWT
    */
-  constructor(private http: HttpClient, private headersService: HeadersService) {}
+  constructor(private http: HttpClient, 
+              private headersService: HeadersService) {}
 
   /**
    * getUser returns a random gitdate user's github username
