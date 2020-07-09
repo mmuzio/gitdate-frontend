@@ -1,4 +1,8 @@
-# Angular 8, NgRx and Angular Material Template
+# Gitdate Frontend Template with Angular 8, NgRx and Angular Material
+
+Use the [Gitdate Backend Template](https://github.com/mmuzio/gitdate-backend-template "Gitdate Backend Template") with this template to have register, login, view profile, connect, and view matches functionality working right out of the box!
+
+This application was built from a fork of a great repo developed by Tomas Trajan: [Angular 8, NgRx and Angular Material Starter](https://github.com/tomastrajan/angular-ngrx-material-starter "Angular 8, NgRx and Angular Material Starter")
 
 ## Table of Content
 
@@ -13,15 +17,15 @@
 ## Getting started
 
 ```bash
-git clone https://github.com/tomastrajan/angular-ngrx-material-starter.git new-project
-cd new-project
+git clone https://github.com/mmuzio/gitdate-frontend.git my-gitdate
+cd my-gitdate
 npm install
-npm start
+ng serve
 ```
 
 ## Useful Commands
 
-- `npm start` - starts a dev server and opens browser with running app
+- `ng serve` - starts a dev server and opens browser with running app
 - `npm run start:prod` - runs full prod build and serves prod bundle
 - `npm run test` - runs lint and tests
 - `npm run watch` - runs tests in watch mode
@@ -41,10 +45,9 @@ When using this starter project to build your own app you might consider some of
 - delete pre-existing `CHANGELOG.md` (you will generate your own with future releases of your features)
 - delete `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md` and `BUILT_WITH.md` files as they are relevant only if project is open sourced on Github
 - edit the title and Open Graph metadata properties in `index.html`
-- remove or adjust links in the [footer](https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/src/app/app.component.html#L79)
+- remove or adjust links in the [footer](https://github.com/mmuzio/gitdate-frontend/blob/master/projects/angular-ngrx-material-starter/src/app/app/app.component.html#L72)
 - replace logo in `/assets` folder ( currently 128 x 128 pixel `png` file )
 - adjust colors in `/themes/default-theme.scss`
-- create a pull request in the [original repository](https://github.com/tomastrajan/angular-ngrx-material-starter/) to update `BUILT_WITH.md` [file](https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/BUILT_WITH.md) with a link and short description of your project
 
 #### Continuous Integration
 
