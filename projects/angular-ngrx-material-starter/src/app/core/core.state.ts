@@ -64,7 +64,19 @@ export const selectRouterState = createFeatureSelector<
  * The overall application state, composed of feature states
  */
 export interface AppState {
+
+  /**
+   * The AuthState
+   */
   auth: AuthState;
+
+  /**
+   * The SettingsState
+   */
   settings: SettingsState;
+
+  /**
+   * The Router State
+   */
   router: RouterReducerState<RouterStateUrl>;
 }

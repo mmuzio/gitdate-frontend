@@ -51,79 +51,79 @@ export class Message {
         this.submitTime = submitTime;
     }
 
-    /**
-     * Get the message id
-     */
-    public getMessage_id(): number {
-        return this.message_id;
-    }
+    // /**
+    //  * Get the message id
+    //  */
+    // public getMessage_id(): number {
+    //     return this.message_id;
+    // }
 
-    /**
-     * Get the message body
-     */
-    public getMessageBody(): string {
-        return this.messageBody;
-    }
+    // /**
+    //  * Get the message body
+    //  */
+    // public getMessageBody(): string {
+    //     return this.messageBody;
+    // }
 
-    /**
-     * Get the match id
-     */
-    public getMatch_id(): number {
-        return this.match_id;
-    }
+    // /**
+    //  * Get the match id
+    //  */
+    // public getMatch_id(): number {
+    //     return this.match_id;
+    // }
 
-    /**
-     * Get the username
-     */
-    public getUsername(): string {
-        return this.username;
-    }
+    // /**
+    //  * Get the username
+    //  */
+    // public getUsername(): string {
+    //     return this.username;
+    // }
 
-    /**
-     * Get the submit time
-     */
-    public getSubmitTime(): Date {
-        return this.submitTime;
-    }
+    // /**
+    //  * Get the submit time
+    //  */
+    // public getSubmitTime(): Date {
+    //     return this.submitTime;
+    // }
 
-    /**
-     * Set the message id
-     * @param message_id The message identifier
-     */
-    public setMessage_id(message_id: number): void {
-        this.message_id = message_id;
-    }
+    // /**
+    //  * Set the message id
+    //  * @param message_id The message identifier
+    //  */
+    // public setMessage_id(message_id: number): void {
+    //     this.message_id = message_id;
+    // }
 
-    /**
-     * Set the messsage body
-     * @param messageBody The message body
-     */
-    public setMessageBody(messageBody: string): void {
-        this.messageBody = messageBody;
-    }
+    // /**
+    //  * Set the messsage body
+    //  * @param messageBody The message body
+    //  */
+    // public setMessageBody(messageBody: string): void {
+    //     this.messageBody = messageBody;
+    // }
 
-    /**
-     * Set the match id
-     * @param match_id The match identifier
-     */
-    public setMatch_id(match_id: number): void {
-        this.match_id = match_id;
-    }
+    // /**
+    //  * Set the match id
+    //  * @param match_id The match identifier
+    //  */
+    // public setMatch_id(match_id: number): void {
+    //     this.match_id = match_id;
+    // }
 
-    /**
-     * Set the username
-     * @param username The username
-     */
-    public setUsername(username: string): void {
-        this.username = username;
-    }
+    // /**
+    //  * Set the username
+    //  * @param username The username
+    //  */
+    // public setUsername(username: string): void {
+    //     this.username = username;
+    // }
 
-    /**
-     * Set the submit time
-     * @param submitTime The submit time
-     */
-    public setSubmitTime(submitTime: Date): void {
-        this.submitTime = submitTime;
-    }
+    // /**
+    //  * Set the submit time
+    //  * @param submitTime The submit time
+    //  */
+    // public setSubmitTime(submitTime: Date): void {
+    //     this.submitTime = submitTime;
+    // }
 
 }

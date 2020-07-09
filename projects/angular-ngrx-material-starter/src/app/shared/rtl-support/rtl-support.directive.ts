@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class RtlSupportDirective implements OnInit, OnDestroy {
 
   /**
-   * 
+   * A subscription used to detect language change events
    */
   private subscription: Subscription;
 

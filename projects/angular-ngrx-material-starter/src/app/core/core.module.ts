@@ -95,6 +95,10 @@ export {
   selectSettingsStickyHeader
 };
 
+/**
+ * Translates HTTP to new acronym
+ * @param http The Angular HttpClient
+ */
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
     http,

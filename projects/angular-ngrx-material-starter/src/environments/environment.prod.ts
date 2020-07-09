@@ -1,5 +1,11 @@
+/**
+ * The location of package.json
+ */
 const packageJson = require('../../../../package.json');
 
+/**
+ * The environment variables for production
+ */
 export const environment = {
   appName: 'Angular Ngrx Material Template',
   envName: 'PROD',

@@ -44,7 +44,7 @@ export const selectPageAnimations = createSelector(
 );
 
 /**
- * 
+ * Select elementsAnimations value from settings state
  */
 export const selectElementsAnimations = createSelector(
   selectSettings,
