@@ -2,7 +2,7 @@
 
 Use the [Gitdate Backend Template](https://github.com/mmuzio/gitdate-backend-template "Gitdate Backend Template") with this template to have register, login, view profile, connect, and view matches functionality working right out of the box!
 
-This application was built from a fork of a great repo developed by Tomas Trajan: [Angular 8, NgRx and Angular Material Starter](https://github.com/tomastrajan/angular-ngrx-material-starter "Angular 8, NgRx and Angular Material Starter")
+This application was built from a fork of this repo developed by Tomas Trajan: [Angular 8, NgRx and Angular Material Starter](https://github.com/tomastrajan/angular-ngrx-material-starter "Angular 8, NgRx and Angular Material Starter")
 
 ## Table of Content
 
@@ -32,7 +32,7 @@ ng serve
 - `npm run prettier` - runs prettier to format whole code base (`.ts` and `.scss`)
 - `npm run analyze` - runs full prod build and `webpack-bundle-analyzer` to visualize how much code is shipped (dependencies & application)
 
-![analzye](https://raw.githubusercontent.com/tomastrajan/angular-ngrx-material-starter/master/meta-assets/analyze.png)
+![analyze](https://raw.githubusercontent.com/tomastrajan/angular-ngrx-material-starter/master/meta-assets/analyze.png)
 
 ## Make It Your Own
 
@@ -118,6 +118,10 @@ Articles with content that explains various approaches used to build this starte
 ## Troubleshooting
 
 - **Blocking at emitting LicenseWebpackPlugin when npm start** - try using [cnpm](https://github.com/cnpm/cnpm) instead of npm
+
+## Contributors
+
+Contributors to forked repository: [Angular 8, NgRx and Angular Material Starter](https://github.com/tomastrajan/angular-ngrx-material-starter "Angular 8, NgRx and Angular Material Starter")
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
