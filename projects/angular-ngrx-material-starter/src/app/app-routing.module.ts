@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { Oauth2Component } from './features/login/oauth2/oauth2.component';
-import { MatchComponent } from './features/matches/match/match.component';
-import { ChatComponent } from './features/matches/chat/chat.component';
+import { AuthGuardService } from './core/auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -11,16 +9,9 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'oauth2/redirect',
-    component: Oauth2Component
-  },
-  {
-    path: 'match/:id',
-    component: MatchComponent
-  },
-  {
-    path: 'chat/:id',
-    component: ChatComponent
+    path: 'login',
+    loadChildren: () =>
+      import('./features/login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'about',
@@ -34,23 +25,21 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./features/profile/profile.module').then(m => m.ProfileModule)
   },
   {
     path: 'connect',
+    canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./features/connect/connect.module').then(m => m.ConnectModule)
   },
   {
     path: 'matches',
+    canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./features/matches/matches.module').then(m => m.MatchesModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('./features/login/login.module').then(m => m.LoginModule)
   },
   {
     path: '**',

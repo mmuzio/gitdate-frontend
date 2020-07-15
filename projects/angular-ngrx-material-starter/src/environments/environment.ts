@@ -21,12 +21,14 @@ export const ACCESS_TOKEN = 'accessToken';
 /**
  * The Oauth redirect URI
  */
-export const OAUTH2_REDIRECT_URI = 'http://localhost:4200/oauth2/redirect'
+export const OAUTH2_REDIRECT_URI =
+  'http://localhost:4200/login/oauth2/redirect';
 
 /**
  * The GitHub authentication endpoint
  */
-export const GITHUB_AUTH_URL = API_BASE_URL + '/oauth2/authorize/github?redirect_uri=' + OAUTH2_REDIRECT_URI;
+export const GITHUB_AUTH_URL =
+  API_BASE_URL + '/oauth2/authorize/github?redirect_uri=' + OAUTH2_REDIRECT_URI;
 
 /**
  * The environment variables for development

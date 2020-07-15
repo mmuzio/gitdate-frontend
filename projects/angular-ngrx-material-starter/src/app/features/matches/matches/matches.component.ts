@@ -13,7 +13,6 @@ import { DisplayMatch } from '../../models/displaymatch.model';
   styleUrls: ['./matches.component.scss']
 })
 export class MatchesComponent implements OnInit {
-
   /**
    * An attribute that can be applied to DOM elements to
    * make them animate when added to the DOM
@@ -28,18 +27,17 @@ export class MatchesComponent implements OnInit {
   /**
    * Inject the necessary services
    * @param matchesService Gets the authenticated user's matches
-   * @param route 
-   * @param router 
+   * @param route
+   * @param router
    */
-  constructor(private matchesService: MatchesService,
-              private router: Router) { }
+  constructor(private matchesService: MatchesService, private router: Router) {}
 
   /**
    * Get the list of matches on initial component load
    */
   ngOnInit() {
     this.matchesService.listMatches().subscribe(matchesList => {
-      this.matchesList  = matchesList
+      this.matchesList = matchesList;
       console.log(this.matchesList);
     });
   }
@@ -48,8 +46,8 @@ export class MatchesComponent implements OnInit {
    * viewMatch navigates to the matched user's profile page
    * @param username the username of the matched user
    */
-  viewMatch(username: string){
-    this.router.navigate(['match', username]);
+  viewMatch(username: string) {
+    this.router.navigate(['matches/profile', username]);
   }
 
   /**
@@ -57,8 +55,7 @@ export class MatchesComponent implements OnInit {
    * the chat between the current user and the matched user
    * @param match_id the id of the match
    */
-  viewChat(match_id: number){
-    this.router.navigate(['chat', match_id]);
+  viewChat(match_id: number) {
+    this.router.navigate(['matches/chat', match_id]);
   }
-
 }

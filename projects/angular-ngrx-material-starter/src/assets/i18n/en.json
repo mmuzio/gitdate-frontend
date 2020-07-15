@@ -71,6 +71,9 @@
   "ngrxtmp.profile.repos": "Repositories",
   "ngrxtmp.profile.lang": "Languages",
   "ngrxtmp.profile.tech": "Technologies",
+  "ngrxtmp.matches.title": "Your matches",
+  "ngrxtmp.matches.profile": "Your match's profile",
+  "ngrxtmp.matches.chat": "Chat with your match",
   "ngrxtmp.title.long": "Angular NgRx Material Template",
   "ngrxtmp.title.short": "Angular Template"
 }

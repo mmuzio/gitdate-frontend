@@ -1,14 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AuthGuardService} from '../../core/core.module';
 import { MatchesComponent } from './matches/matches.component';
+import { MatchComponent } from './match/match.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MatchesComponent,
-    canActivate: [AuthGuardService],
-    data: { title: 'ngrxtmp.menu.profile' }
+    children: [
+      {
+        path: '',
+        component: MatchesComponent,
+        data: { title: 'ngrxtmp.matches.title' }
+      },
+      {
+        path: 'profile/:id',
+        component: MatchComponent,
+        data: { title: 'ngrxtmp.matches.profile' }
+      },
+      {
+        path: 'chat/:id',
+        component: ChatComponent,
+        data: { title: 'ngrxtmp.matches.chat' }
+      }
+    ]
   }
 ];
 

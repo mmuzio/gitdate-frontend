@@ -6,8 +6,13 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   {
     path: '',
-    component: AboutComponent,
-    data: { title: 'ngrxtmp.menu.about' }
+    children: [
+      {
+        path: '',
+        component: AboutComponent,
+        data: { title: 'ngrxtmp.menu.about' }
+      }
+    ]
   }
 ];
 

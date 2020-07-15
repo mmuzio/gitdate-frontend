@@ -6,8 +6,13 @@ import { SettingsContainerComponent } from './settings/settings-container.compon
 const routes: Routes = [
   {
     path: '',
-    component: SettingsContainerComponent,
-    data: { title: 'ngrxtmp.menu.settings' }
+    children: [
+      {
+        path: '',
+        component: SettingsContainerComponent,
+        data: { title: 'ngrxtmp.menu.settings' }
+      }
+    ]
   }
 ];
 
