@@ -4,19 +4,21 @@
       <h1>How to Use Gitdate</h1>
       <br>
       <h2>Make Your Profile</h2>
-      <div class="actions">
-        <a 
-          mat-raised-button 
-          class="actions-main" 
-          color="accent" 
-          href="https://www.github.com/mmuzio/gitdatetest" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          [ngClass]="routeAnimationsElements">
-          <fa-icon [icon]="['fab','github']"></fa-icon>
-          1. Fork Profile Repo
-        </a>
-      </div>
+      <br>
+      <h5>1. Fork Gitdate Profile Repo</h5>
+        <div class="actions">
+          <a 
+            mat-raised-button 
+            class="actions-main" 
+            color="accent" 
+            href="https://www.github.com/mmuzio/gitdatetest" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            [ngClass]="routeAnimationsElements">
+            <fa-icon [icon]="['fab','github']"></fa-icon>
+            Fork Profile Repo
+          </a>
+        </div>
       <h5>2. Clone Profile Repo</h5>
       <br>
       <h5>3. Update gitdate.json</h5>
@@ -41,7 +43,17 @@
       <br>
       <h5>6. Push</h5>
       <br>
-      <h2>Connect with Other Programmers</h2>
+      <h2>Get Started</h2>
+      <div class="actions">
+        <a 
+          mat-raised-button 
+          class="actions-main" 
+          color="accent" 
+          routerLink="../login" 
+          [ngClass]="routeAnimationsElements">
+          Login
+        </a>
+      </div>
       <div class="actions">
         <a 
           mat-raised-button 
@@ -49,7 +61,17 @@
           color="accent" 
           routerLink="../connect" 
           [ngClass]="routeAnimationsElements">
-          1. Connect
+          Connect
+        </a>
+      </div>
+      <div class="actions">
+        <a 
+          mat-raised-button 
+          class="actions-main" 
+          color="accent" 
+          routerLink="../matches" 
+          [ngClass]="routeAnimationsElements">
+          View Matches
         </a>
       </div>
     </div>
