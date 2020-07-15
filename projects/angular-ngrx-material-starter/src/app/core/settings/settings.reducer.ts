@@ -7,7 +7,9 @@ import {
   actionSettingsChangeHour,
   actionSettingsChangeLanguage,
   actionSettingsChangeStickyHeader,
-  actionSettingsChangeTheme
+  actionSettingsChangeTheme,
+  actionSettingsChangeSortOption,
+  actionSettingsChangeTopSortRange
 } from './settings.actions';
 import { Action, createReducer, on } from '@ngrx/store';
 
@@ -23,7 +25,9 @@ export const initialState: SettingsState = {
   pageAnimations: true,
   pageAnimationsDisabled: false,
   elementsAnimations: true,
-  hour: 0
+  hour: 0,
+  sortOption: 'NEW',
+  topSortRange: 'ALL-TIME'
 };
 
 /**
@@ -39,6 +43,8 @@ const reducer = createReducer(
     actionSettingsChangeAnimationsPage,
     actionSettingsChangeAnimationsElements,
     actionSettingsChangeHour,
+    actionSettingsChangeSortOption,
+    actionSettingsChangeTopSortRange,
     (state, action) => ({ ...state, ...action })
   ),
   on(

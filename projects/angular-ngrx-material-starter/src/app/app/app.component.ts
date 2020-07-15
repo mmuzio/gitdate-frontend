@@ -29,7 +29,6 @@ import {
   animations: [routeAnimations]
 })
 export class AppComponent implements OnInit {
-
   /**
    * Is the app in production?
    */
@@ -66,7 +65,8 @@ export class AppComponent implements OnInit {
   navigation = [
     { link: 'about', label: 'ngrxtmp.menu.about' },
     { link: 'connect', label: 'ngrxtmp.menu.connect' },
-    { link: 'matches', label: 'ngrxtmp.menu.matches' }
+    { link: 'matches', label: 'ngrxtmp.menu.matches' },
+    { link: 'gittit', label: 'Gittit' }
   ];
 
   /**
@@ -74,7 +74,8 @@ export class AppComponent implements OnInit {
    */
   navigationSideMenu = [
     ...this.navigation,
-    { link: 'settings', label: 'ngrxtmp.menu.settings' }
+    { link: 'settings', label: 'ngrxtmp.menu.settings' },
+    { link: 'gittit', label: 'Gittit' }
   ];
 
   /**
@@ -115,7 +116,7 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * Test if localStorage works, set browser specific settings, then select 
+   * Test if localStorage works, set browser specific settings, then select
    * the user's settings from the store
    */
   ngOnInit(): void {
@@ -144,7 +145,7 @@ export class AppComponent implements OnInit {
 
   /**
    * Dispatch the change language action with language payload
-   * @param param0 
+   * @param param0
    */
   onLanguageSelect({ value: language }) {
     this.store.dispatch(actionSettingsChangeLanguage({ language }));

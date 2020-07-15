@@ -10,24 +10,18 @@ import {
   actionSettingsChangeAutoNightMode,
   actionSettingsChangeLanguage,
   actionSettingsChangeTheme,
-  actionSettingsChangeStickyHeader,
-  actionSettingsChangeSortOption,
-  actionSettingsChangeTopSortRange
+  actionSettingsChangeStickyHeader
 } from '../../../core/settings/settings.actions';
 import { SettingsState, State } from '../../../core/settings/settings.model';
 import { selectSettings } from '../../../core/settings/settings.selectors';
 
-/**
- * SettingsContainerComponent gives the user option to change
- * various settings
- */
 @Component({
-  selector: 'ngrxtmp-settings',
-  templateUrl: './settings-container.component.html',
-  styleUrls: ['./settings-container.component.scss'],
+  selector: 'ngrxtmp-controls',
+  templateUrl: './controls.component.html',
+  styleUrls: ['./controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsContainerComponent implements OnInit {
+export class ControlsComponent implements OnInit {
   /**
    * An attribute that can be applied to DOM elements to
    * make them animate when added to the DOM
@@ -51,25 +45,6 @@ export class SettingsContainerComponent implements OnInit {
     { value: 'pt-br', label: 'pt-br' },
     { value: 'zh-cn', label: 'zh-cn' },
     { value: 'he', label: 'he' }
-  ];
-
-  /**
-   * Array of sort options
-   */
-  sortOptions = [
-    { value: 'NEW', label: 'NEW' },
-    { value: 'TOP', label: 'TOP' }
-  ];
-
-  /**
-   * Array of sort options
-   */
-  topSortRangeOptions = [
-    { value: 'TODAY', label: 'TODAY' },
-    { value: 'WEEK', label: 'THIS WEEK' },
-    { value: 'MONTH', label: 'THIS MONTH' },
-    { value: 'YEAR', label: 'THIS YEAR' },
-    { value: 'ALL-TIME', label: 'ALL TIME' }
   ];
 
   /**
@@ -143,21 +118,5 @@ export class SettingsContainerComponent implements OnInit {
     this.store.dispatch(
       actionSettingsChangeAnimationsElements({ elementsAnimations })
     );
-  }
-
-  /**
-   * Dispatch change settings action with language payload
-   * @param param0 The selected language
-   */
-  onSortOptionSelect({ value: sortOption }) {
-    this.store.dispatch(actionSettingsChangeSortOption({ sortOption }));
-  }
-
-  /**
-   * Dispatch change settings action with language payload
-   * @param param0 The selected language
-   */
-  onTopSortRangeSelect({ value: topSortRange }) {
-    this.store.dispatch(actionSettingsChangeTopSortRange({ topSortRange }));
   }
 }

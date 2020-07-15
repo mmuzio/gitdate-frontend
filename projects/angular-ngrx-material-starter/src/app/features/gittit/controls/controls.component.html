@@ -1,0 +1,36 @@
+<div class="container">
+    <!-- <div class="row">
+      <div class="col-sm-12"><h1>Gittit {{ 'ngrxtmp.settings.title' | translate }}</h1></div>
+    </div> -->
+    <br>
+    <ng-container *ngIf="settings$ | async as settings">
+      <div class="row">
+        <div class="col-md-3 group" [ngClass]="routeAnimationsElements">
+          <h2>{{ 'ngrxtmp.settings.general.title' | translate }}</h2>
+          <div class="icon-form-field">
+            <mat-icon color="accent"><fa-icon icon="language" color="accent"></fa-icon></mat-icon>
+            <mat-form-field>
+              <mat-select [placeholder]="'ngrxtmp.settings.general.placeholder' | translate"
+                          [ngModel]="settings.language"
+                          (selectionChange)="onLanguageSelect($event)"
+                          name="language">
+                <mat-option *ngFor="let l of languages" [value]="l.value">
+                  {{ 'ngrxtmp.settings.general.language.' + l.label | translate }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="icon-form-field">
+             <mat-icon color="accent"><fa-icon icon="bars" color="accent"></fa-icon></mat-icon>
+             <mat-placeholder>{{ 'ngrxtmp.settings.themes.sticky-header' | translate }}
+             </mat-placeholder>
+             <mat-slide-toggle
+               [checked]="settings.stickyHeader"
+               (change)="onStickyHeaderToggle($event)">
+             </mat-slide-toggle>
+           </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  

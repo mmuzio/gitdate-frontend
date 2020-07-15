@@ -60,6 +60,8 @@
   "ngrxtmp.settings.themes.saneago": "",
   "ngrxtmp.settings.themes.sticky-header": "Sticky header",
   "ngrxtmp.settings.themes.title": "Themes",
+  "ngrxtmp.settings.controls.sortoptions.placeholder": "Sort By",
+  "ngrxtmp.settings.controls.topsortrange.placeholder": "Time Period",
   "ngrxtmp.settings.title": "Settings",
   "ngrxtmp.login.title": "Login",
   "ngrxtmp.login.username": "Username",

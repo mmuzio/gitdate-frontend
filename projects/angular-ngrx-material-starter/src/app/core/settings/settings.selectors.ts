@@ -76,7 +76,7 @@ export const selectHour = createSelector(
 );
 
 /**
- * selectIsNightHour selects night mode if current hour is 
+ * selectIsNightHour selects night mode if current hour is
  * in night mode time window
  */
 export const selectIsNightHour = createSelector(
@@ -86,7 +86,7 @@ export const selectIsNightHour = createSelector(
 );
 
 /**
- * selectEffectiveTheme returns the current theme, which depends on the 
+ * selectEffectiveTheme returns the current theme, which depends on the
  * current hour and if the user has selected a night theme and autoNightMode
  */
 export const selectEffectiveTheme = createSelector(
@@ -95,4 +95,20 @@ export const selectEffectiveTheme = createSelector(
   selectIsNightHour,
   (theme, nightTheme, isNightHour) =>
     (isNightHour ? nightTheme : theme).toLowerCase()
+);
+
+/**
+ * Select Gittit sort option value from settings state
+ */
+export const selectSortOption = createSelector(
+  selectSettings,
+  (state: SettingsState) => state.sortOption
+);
+
+/**
+ * Select Gittit sort option value from settings state
+ */
+export const selectTopSortRange = createSelector(
+  selectSettings,
+  (state: SettingsState) => state.topSortRange
 );

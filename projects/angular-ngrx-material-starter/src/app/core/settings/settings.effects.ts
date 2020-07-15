@@ -25,7 +25,9 @@ import {
   actionSettingsChangeLanguage,
   actionSettingsChangeTheme,
   actionSettingsChangeStickyHeader,
-  actionSettingsChangeHour
+  actionSettingsChangeHour,
+  actionSettingsChangeSortOption,
+  actionSettingsChangeTopSortRange
 } from './settings.actions';
 import {
   selectEffectiveTheme,
@@ -50,24 +52,24 @@ const INIT = of('ngrxtmp-init-effect-trigger');
  */
 @Injectable()
 export class SettingsEffects {
-
   /**
    * The current hour
    */
   hour = 0;
-  
+
   /**
    * Inject necessary services
-   * @param actions$ 
+   * @param actions$
    * @param store The NGRX store
    * @param router The Angular router
-   * @param overlayContainer 
+   * @param overlayContainer
    * @param localStorageService The localStorage service
    * @param titleService The title service
    * @param animationsService The animations service
    * @param translateService The translate service
    * @param ngZone The Angular ngZone service
-   */  
+   */
+
   constructor(
     private actions$: Actions,
     private store: Store<State>,
@@ -108,7 +110,9 @@ export class SettingsEffects {
           actionSettingsChangeAutoNightMode,
           actionSettingsChangeLanguage,
           actionSettingsChangeStickyHeader,
-          actionSettingsChangeTheme
+          actionSettingsChangeTheme,
+          actionSettingsChangeSortOption,
+          actionSettingsChangeTopSortRange
         ),
         withLatestFrom(this.store.pipe(select(selectSettingsState))),
         tap(([action, settings]) =>

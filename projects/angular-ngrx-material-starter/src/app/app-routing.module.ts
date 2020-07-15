@@ -42,6 +42,13 @@ const routes: Routes = [
       import('./features/matches/matches.module').then(m => m.MatchesModule)
   },
   {
+    path: 'gittit',
+    canActivate: [AuthGuardService],
+    loadChildren: () =>
+      import('./features/gittit/gittit.module').then(m => m.GittitModule)
+  },
+
+  {
     path: '**',
     redirectTo: 'login'
   }

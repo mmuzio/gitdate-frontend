@@ -30,6 +30,35 @@
            </mat-slide-toggle>
          </div>
       </div>
+      <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
+        <h2>Gittit Controls</h2>
+        <div class="icon-form-field">
+          <mat-icon color="accent"><fa-icon icon="language" color="accent"></fa-icon></mat-icon>
+          <mat-form-field>
+            <mat-select [placeholder]="'ngrxtmp.settings.controls.sortoptions.placeholder' | translate"
+                        [ngModel]="settings.sortOption"
+                        (selectionChange)="onSortOptionSelect($event)"
+                        name="sortOptions">
+              <mat-option *ngFor="let option of sortOptions" [value]="option.value">
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="icon-form-field">
+          <mat-icon color="accent"><fa-icon icon="language" color="accent"></fa-icon></mat-icon>
+          <mat-form-field>
+            <mat-select [placeholder]="'ngrxtmp.settings.controls.topsortrange.placeholder' | translate"
+                        [ngModel]="settings.topSortRange"
+                        (selectionChange)="onTopSortRangeSelect($event)"
+                        name="topSortRangeOptions">
+              <mat-option *ngFor="let option of topSortRangeOptions" [value]="option.value">
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-6 group" [ngClass]="routeAnimationsElements">

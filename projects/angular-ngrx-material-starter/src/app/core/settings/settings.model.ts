@@ -11,10 +11,24 @@ export const NIGHT_MODE_THEME = 'BLACK-THEME';
 export type Language = 'en' | 'sk' | 'de' | 'fr' | 'es' | 'pt-br' | 'he';
 
 /**
+ * The Gittit sort options
+ */
+export type SortOption = 'New' | 'Top';
+
+/**
+ * The Gittit top sort range options
+ */
+export type TopSortRangeOption =
+  | 'TODAY'
+  | 'WEEK'
+  | 'MONTH'
+  | 'YEAR'
+  | 'ALL-TIME';
+
+/**
  * SettingsState interface
  */
 export interface SettingsState {
-
   /**
    * The user's preffered language
    */
@@ -60,17 +74,24 @@ export interface SettingsState {
    */
   hour: number;
 
+  /**
+   * The user's preferred Gittit sorting option
+   */
+  sortOption: string;
+
+  /**
+   * The user's preferred Gittit sorting date range when sorting by TOP
+   */
+  topSortRange: string;
 }
 
 /**
- * State interface, currently composed of 
+ * State interface, currently composed of
  * just SettingsState, but may be extended
  */
 export interface State extends AppState {
-
   /**
    * SettingsState
    */
   settings: SettingsState;
-  
 }
