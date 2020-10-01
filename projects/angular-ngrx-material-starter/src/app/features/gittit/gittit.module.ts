@@ -10,6 +10,7 @@ import { ControlsComponent } from './controls/controls.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
 import { AddPostComponent } from './add-post/add-post.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { AddPostComponent } from './add-post/add-post.component';
     PostComponent,
     AddPostComponent
   ],
-  imports: [CommonModule, SharedModule, GittitRoutingModule]
+  imports: [CommonModule, SharedModule, GittitRoutingModule, EditorModule]
 })
 export class GittitModule {}
