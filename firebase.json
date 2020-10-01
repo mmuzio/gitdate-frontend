@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/angular-ngrx-material-starter",
+    "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
