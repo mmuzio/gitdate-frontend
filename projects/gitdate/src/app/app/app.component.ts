@@ -65,8 +65,7 @@ export class AppComponent implements OnInit {
   navigation = [
     { link: 'about', label: 'ngrxtmp.menu.about' },
     { link: 'connect', label: 'ngrxtmp.menu.connect' },
-    { link: 'matches', label: 'ngrxtmp.menu.matches' },
-    { link: 'gittit', label: 'Gittit' }
+    { link: 'matches', label: 'ngrxtmp.menu.matches' }
   ];
 
   /**
@@ -74,8 +73,7 @@ export class AppComponent implements OnInit {
    */
   navigationSideMenu = [
     ...this.navigation,
-    { link: 'settings', label: 'ngrxtmp.menu.settings' },
-    { link: 'gittit', label: 'Gittit' }
+    { link: 'settings', label: 'ngrxtmp.menu.settings' }
   ];
 
   /**
