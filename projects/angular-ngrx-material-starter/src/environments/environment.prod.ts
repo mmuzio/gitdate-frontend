@@ -22,7 +22,7 @@ export const ACCESS_TOKEN = 'accessToken';
  * The Oauth redirect URI
  */
 export const OAUTH2_REDIRECT_URI =
-  'http://localhost:4200/login/oauth2/redirect';
+  'https://gitdate.web.app/login/oauth2/redirect';
 
 /**
  * The GitHub authentication endpoint
