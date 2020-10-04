@@ -53,7 +53,7 @@
             </h3>
             <mat-card class="mat-card" *ngFor="let repo of profileData.repos">
                 <mat-card-title>
-                  <a href="{{'https://github.com/'+username+repo.url}}" target="_blank" rel="noopener noreferrer">
+                  <a href="{{'https://github.com/'+username+'/'+repo.url}}" target="_blank" rel="noopener noreferrer">
                     <fa-icon [icon]="['fab','github']"></fa-icon>
                     {{repo.url}}
                   </a>
