@@ -71,10 +71,7 @@ export class AppComponent implements OnInit {
   /**
    * The navigate links for the side menu
    */
-  navigationSideMenu = [
-    ...this.navigation,
-    { link: 'settings', label: 'ngrxtmp.menu.settings' }
-  ];
+  navigationSideMenu = [...this.navigation];
 
   /**
    * Is the user authenticated?
