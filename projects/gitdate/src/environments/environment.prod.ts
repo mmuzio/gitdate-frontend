@@ -11,7 +11,7 @@ const packageJson = require('../../../../package.json');
 /**
  * The base URL for the GitDate API
  */
-export const API_BASE_URL = 'http://localhost:8080';
+export const API_BASE_URL = 'https://gitdate-backend.ue.r.appspot.com';
 
 /**
  * Identifier for the OAuth access token
